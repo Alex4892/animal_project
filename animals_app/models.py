@@ -1,28 +1,24 @@
 from django.db import models
 
 class Animal(models.Model):
-    # kind = models.CharField(
-    #     max_length=100
-    # )
     title = models.CharField(
         max_length=200
+    )
+    kind = models.CharField(
+        max_length=100
+    )
+    nickname = models.TextField(
+        max_length=500
     )
     description = models.TextField(
         max_length=500
     )
-    # publication = models.CharField(
-    #     max_length=100
-    # )
-    # publication_year = models.CharField(
-    #     max_length=4
-    # )
-    # price = models.DecimalField(
-    #     max_digits=10,
-    #     decimal_places=2
-    # )
-    # author = models.CharField(
-    #     max_length=100
-    # )
+    phone_number = models.CharField(
+        max_length=15
+    )
+    signs = models.TextField(
+        max_length=100
+    )
     create_at = models.DateTimeField(
         auto_now_add=True
     )
