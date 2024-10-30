@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block lists %}
+  Главная страница
+{% endblock %}
+{% block content %}
+<div>
+    <h1>{{ animal.title }}</h1>
+</div>
+<div>
+    <h3>Животное: {{ animal.kind }}</h3>
+    <h3>Кличка: {{ animal.nickname }}</h3>
+    <p>Описание: {{ animal.description }}</p>
+    <p>Телефон: {{ animal.phone_number }}</p>
+    <p>Приметы: {{ animal.signs: }}</p>
+</div>
+{% endblock %}

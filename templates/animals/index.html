@@ -4,4 +4,23 @@
   Главная страница
 {% endblock %}
 {% block content %}
+
+{% if animals %}
+  <div class="d-flex justify-content-around">
+    {% for book in books %}
+      <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{ animal.title }}</h5>
+          <p class="card-text">{{ animal.nickname }}</p>
+          <p class="card-text">{{ animal.description }}</p>
+          <a href="{% url 'animals:detail_animal' animal.id %}" class="btn btn-primary">Посмотреть</a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <h1>Объявлений нет</h1>
+{% endif %}
+
 {% endblock %}
