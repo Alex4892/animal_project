@@ -18,4 +18,12 @@
     <p>Телефон: {{ animal.phone_number }}</p>
     <p>Приметы: {{ animal.signs: }}</p>
 </div>
+
+<div>
+  <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+    <a href="{% url 'animals:delete_animal' animal.id %}" class="btn btn-danger">Удалить</a>
+    <a href="{% url 'animals:edit_animal' animal.id %}" class="btn btn-warning">Изменить</a>
+  </div>
+</div>
+
 {% endblock %}
