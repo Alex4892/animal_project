@@ -16,9 +16,9 @@ class Animal(models.Model):
         max_length=100,
         verbose_name='Заголовок'
     )
-    kind = models.CharField(
-        max_length=100,
-        verbose_name='Вид'
+    kind = models.ManyToManyField(
+        Kind,
+        verbose_name='Виды'
     )
     nickname = models.TextField(
         max_length=20,
@@ -44,7 +44,7 @@ class Animal(models.Model):
         return self.title
     
     class Meta:
-        verbose_name = "Животное"
-        verbose_name_plural = "Животные"
+        verbose_name = "Заголовок"
+        verbose_name_plural = "Заголовки"
 
 # Create your models here.

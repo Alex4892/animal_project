@@ -8,14 +8,14 @@
     <h1>{{ animal.title }}</h1>
 </div>
 <div>
-    <h3>Животное:
+    <h3>Вид:
       {% for kind in kinds %}
         {{ kind }}{% if not forloop.last %}, {% endif %}
       {% endfor %}
     </h3>
     <h3>Кличка: {{ animal.nickname }}</h3>
     <p>Описание: {{ animal.description }}</p>
-    <p>Телефон: {{ animal.phone_number }}</p>
+    <p>Номер телефона: {{ animal.phone_number }}</p>
     <p>Приметы: {{ animal.signs: }}</p>
 </div>
 
