@@ -19,7 +19,7 @@ def view_detail_animal(request, animal_id):
     }
     return render(request, "animals/detail_animal.html", context=context)
 
-def add_animal(request):
+def add_animal_view(request):
     if request.method == 'POST':
         form = AnimalForm(request.POST)
         if form.is_valid():
@@ -29,7 +29,7 @@ def add_animal(request):
         form = AnimalForm()
     return render(request, 'animals/add_animal.html', {'form': form})
 
-def edit_animal(request, book_id):
+def edit_animal_view(request, book_id):
     animal = get_object_or_404(Animal, id=animal_id)
     if request.method == 'POST':
         form = AnimalForm(request.POST, instance=animal)
@@ -40,7 +40,7 @@ def edit_animal(request, book_id):
         form = AnimalForm(instance=animal)
     return render(request, 'animals/add_animal.html', {'form': form})
 
-def delete_animal(request, animal_id):
+def delete_animal_view(request, animal_id):
     animal = get_object_or_404(Animal, id=animal_id)
     print(animal)
     if request.method == 'POST':
