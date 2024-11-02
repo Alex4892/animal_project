@@ -12,12 +12,12 @@ def view_animals(request):
 
 def view_detail_animal(request, animal_id):
     animal = get_object_or_404(Animal, id=animal_id)
-    kinds = animal.kinds.all()
+    kinds = animal.kind.all()
     context = {
         "animal": animal,
         "kinds": kinds
     }
-    return render(request, "animals/detail_animal.html", context=context)
+    return render(request, "animals/detail_animals.html", context=context)
 
 def add_animal_view(request):
     if request.method == 'POST':
@@ -29,7 +29,7 @@ def add_animal_view(request):
         form = AnimalForm()
     return render(request, 'animals/add_animal.html', {'form': form})
 
-def edit_animal_view(request, book_id):
+def edit_animal_view(request, animal_id):
     animal = get_object_or_404(Animal, id=animal_id)
     if request.method == 'POST':
         form = AnimalForm(request.POST, instance=animal)
