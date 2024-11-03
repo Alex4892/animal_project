@@ -6,15 +6,18 @@
 {% block content %}
 
 {% if animals %}
-  <div class="d-flex justify-content-around">
+<div class="container">
+  <div class="row">
     {% for animal in animals %}
-      <div class="card" style="width: 18rem;">
-        <img src="#" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">{{ animal.title }}</h5>
-          <p class="card-text">{{ animal.nickname }}</p>
-          <p class="card-text">{{ animal.description }}</p>
-          <a href="{% url 'animals:detail_animal' animal.id %}" class="btn btn-primary">Посмотреть</a>
+      <div class="col-12 col-md-4 col-lg-3 mb-3 d-flex">
+        <div class="card" style="width: 100%;">
+          <img src="{% if animal.image %} {{ animal.image.url }} {% else %} {% static 'img/1.jpg'%} {% endif %}">
+          <div class="card-body">
+            <h5 class="card-title">{{ book.title }}</h5>
+            <p class="card-text">{{ book.nickname }}</p>
+            <p class="card-text">{{ book.description }}</p>
+            <a href="{% url 'animals:detail_animal' animal.id %}" class="btn btn-primary">Посмотреть</a>
+          </div>
         </div>
       </div>
     {% endfor %}

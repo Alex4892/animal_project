@@ -21,7 +21,7 @@ def view_detail_animal(request, animal_id):
 
 def add_animal_view(request):
     if request.method == 'POST':
-        form = AnimalForm(request.POST)
+        form = AnimalForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('animals:index')
@@ -32,7 +32,7 @@ def add_animal_view(request):
 def edit_animal_view(request, animal_id):
     animal = get_object_or_404(Animal, id=animal_id)
     if request.method == 'POST':
-        form = AnimalForm(request.POST, instance=animal)
+        form = AnimalForm(request.POST, request.FILES, instance=animal)
         if form.is_valid():
             form.save()
             return redirect('animals:index')
