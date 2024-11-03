@@ -36,12 +36,23 @@ class Animal(models.Model):
         max_length=100,
         verbose_name='Приметы'
     )
+    image = models.ImageField(
+        upload_to='animals/',
+        blank=True,
+        null=True,
+        verbose_name='Изображение'
+    )
     create_at = models.DateTimeField(
         auto_now_add=True,
         verbose_name='Дата подачи объявления'
     )
     def __str__(self):
         return self.title
+    
+    def delete(self, *args, **kwargs):
+        if self.image:
+            self.image.delete()
+        super().delete(*args, **kwargs)
     
     class Meta:
         verbose_name = "Заголовок"
