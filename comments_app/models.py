@@ -21,7 +21,7 @@ class Comment(models.Model):
         verbose_name_plural = 'Комментарии'
 
     def __str__(self):
-        return f'Комментарий от {self.email} к объявлению о виде животном "{self.animal.name}"'
+        return f'Комментарий от {self.email} к объявлению о виде животном "{self.animal.kind}"'
 
 
 # Create your models here.

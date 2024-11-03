@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 
 from .models import Animal
 from .forms import AnimalForm
+from comments_app.forms import CommentForm
 
 def view_animals(request):
     animals = Animal.objects.all()
@@ -13,9 +14,13 @@ def view_animals(request):
 def view_detail_animal(request, animal_id):
     animal = get_object_or_404(Animal, id=animal_id)
     kinds = animal.kind.all()
+    comments = animal.comments.all()
+    form = CommentForm()
     context = {
         "animal": animal,
-        "kinds": kinds
+        "kinds": kinds,
+        "comments": comments,
+        "form": form,
     }
     return render(request, "animals/detail_animals.html", context=context)
 
