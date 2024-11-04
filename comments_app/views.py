@@ -9,7 +9,9 @@ def add_comment_view(request, animal_id):
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
-            comment.animal = animal
+            comment.animal_id = animal_id
+            if request.user.is_authenticated:
+                comment.author = request.user
             comment.save()
             return redirect('animals:detail_animal', animal_id=animal.id)
     else:
