@@ -28,7 +28,9 @@ def add_animal_view(request):
     if request.method == 'POST':
         form = AnimalForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            animal = form.save(commit=False)
+            animal.submit = request.user
+            animal.save() 
             return redirect('animals:index')
     else:
         form = AnimalForm()

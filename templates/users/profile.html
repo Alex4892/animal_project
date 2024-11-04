@@ -25,6 +25,7 @@
                     <th scope="col">Заголовок</th>
                     <th scope="col">Дата подачи</th>
                     <th scope="col">Описание</th>
+                    <th scope="col">Подающий объявление</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,10 +34,11 @@
                 <td>{{ animal.title }}</td>
                 <td>{{ animal.create_at }}</td>
                 <td>{{ animal.description }}</td>
+                <td>{{ animal.submit }}</td>
                 <td>
                     <div class="btn-group" role="group">
-                        <a href="{% url 'books:delete_book' book.id %}" class="btn btn-danger">Удалить</a>
-                        <a href="{% url 'books:edit_book' book.id %}" class="btn btn-warning">Изменить</a>
+                        <a href="{% url 'animals:delete_animal' animal.id %}" class="btn btn-danger">Удалить</a>
+                        <a href="{% url 'animals:edit_animal' animal.id %}" class="btn btn-warning">Изменить</a>
                       </div>
                 </td>
             </tr>            

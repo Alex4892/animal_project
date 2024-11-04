@@ -5,7 +5,7 @@ from animals_app.models import Animal
 from .forms import CustomUserCreationForm, CustomAuthenticationForm
 
 def view_profile(request):
-    user_animals = Animal.objects.filter(description=request.user)
+    user_animals = Animal.objects.filter(submit=request.user)
     return render(request, 'users/profile.html', {'user_animals': user_animals})
 
 def register_user_view(request):

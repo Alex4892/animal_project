@@ -1,4 +1,7 @@
 from django.db import models
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 class Kind(models.Model):
     name = models.CharField(
@@ -41,6 +44,16 @@ class Animal(models.Model):
         blank=True,
         null=True,
         verbose_name='Изображение'
+    )
+    quantity = models.PositiveIntegerField(
+        default=0,
+        verbose_name='Количество'
+    )
+    submit = models.ForeignKey(
+        User,
+        related_name="animals",
+        on_delete=models.CASCADE,
+        verbose_name="Подающий объявление"
     )
     create_at = models.DateTimeField(
         auto_now_add=True,
