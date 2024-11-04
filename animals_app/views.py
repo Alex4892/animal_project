@@ -42,7 +42,7 @@ def edit_animal_view(request, animal_id):
         form = AnimalForm(request.POST, request.FILES, instance=animal)
         if form.is_valid():
             form.save()
-            return redirect('animals:index')
+            return redirect('animals:detail_animal', animal_id=animal.id)
     else:
         form = AnimalForm(instance=animal)
     return render(request, 'animals/add_animal.html', {'form': form})
