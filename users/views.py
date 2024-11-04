@@ -1,13 +1,17 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.decorators import login_required
+from django.db import transaction
 
 from animals_app.models import Animal
 from .forms import CustomUserCreationForm, CustomAuthenticationForm
 
+@login_required(login_url='users:login')
 def view_profile(request):
     user_animals = Animal.objects.filter(submit=request.user)
     return render(request, 'users/profile.html', {'user_animals': user_animals})
 
+@transaction.atomic
 def register_user_view(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
