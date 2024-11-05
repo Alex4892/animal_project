@@ -1,4 +1,8 @@
 from django.shortcuts import get_object_or_404, redirect, render
+from django.views.decorators.http import require_POST
+from django.contrib.auth.decorators import user_passes_test
+from django.http import JsonResponse
+
 from .models import Comment
 from .forms import CommentForm
 from animals_app.models import Animal
@@ -33,5 +37,18 @@ def delete_comment_view(request, comment_id, animal_id):
     comment = get_object_or_404(Comment, id=comment_id, animal_id=animal_id)
     comment.delete()
     return redirect('animals:detail_animal', animal_id=animal_id)
+
+@require_POST
+@user_passes_test(lambda u: u.is_superuser)  
+def change_comment_status(request, comment_id):
+    try:
+        comment = Comment.objects.get(id=comment_id)
+        comment.is_verified = not comment.is_verified
+        comment.save()
+        return JsonResponse({"status": "success", "is_verified": comment.is_verified})
+    except Comment.DoesNotExist:
+        return JsonResponse({"status": "error", "message": "Комментарий не найден"})
+    except Exception as e:
+        return JsonResponse({"status": "error", "message": str(e)})
 
 # Create your views here.

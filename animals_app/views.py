@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core.exceptions import PermissionDenied
 from django.core.paginator import Paginator
+from django.views.decorators.http import require_POST
+from django.http import JsonResponse
 
 
 from .models import Animal
@@ -71,5 +73,16 @@ def delete_animal_view(request, animal_id):
         animal.delete()
         return redirect('animals:index')
     return render(request, 'animals/delete_animal.html', {'animal': animal})
+
+@require_POST
+@user_passes_test(lambda u: u.is_superuser)  
+def change_animal_status(request, animal_id):
+    try:
+        animal = Animal.objects.get(id=animal_id)
+        animal.is_verified = not animal.is_verified
+        animal.save()
+        return JsonResponse({"status": "success", "is_verified": animal.is_verified})
+    except Animal.DoesNotExist:
+        return JsonResponse({"status": "error", "message": "Объявление не найдено"})
 
 # Create your views here.
