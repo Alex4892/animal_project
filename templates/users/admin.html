@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block lists %} Панель администратора {% endblock %} 
+{% block content %}
+<div class="text-center">
+  <h2>Панель администратора</h2>
+</div>
+<div>
+  <h3>Объявления</h3>
+  <table class="table text-center">
+    <thead>
+      <tr>
+        <th scope="col">Заголовок</th>
+        {% comment %} <th scope="col">Вид животного</th> {% endcomment %}
+        <th scope="col">Кличка</th>
+        <th scope="col">Номер телефона</th>
+        <th scope="col">Приметы</th>
+        <th scope="col">Статус</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for animal in animals %}
+        <tr>
+          <td>{{ animal.title }}</td>
+          {% comment %} <td>{{ animal.kind }}</td> {% endcomment %}
+          <td>{{ animal.nickname }}</td>
+          <td>{{ animal.phone_number }}</td>
+          <td>{{ animal.signs }}</td>
+          <td>
+              <input class="form-check-input animal-switch" type="checkbox" role="switch" id="animalSwitch{{ animal.id }}"
+                     data-animal-id="{{ animal.id }}" {% if animal.is_verified %}checked{% endif %}>
+          </td>        
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+</div>
+<div class="mt-5">
+  <h3>Комментарии</h3>
+  <table class="table text-center">
+    <thead>
+      <tr>
+        <th scope="col">Автор</th>
+        <th scope="col">Email</th>
+        <th scope="col">Текст</th>
+        <th scope="col">Статус</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for comment in comments %}
+        <tr>
+            <td>{{ comment.author }}</td>
+            <td>{{ comment.email }}</td>
+            <td>{{ comment.text }}</td>
+            <td>
+                <input class="form-check-input comment-switch" type="checkbox" role="switch" id="commentSwitch{{ comment.id }}"
+                       data-comment-id="{{ comment.id }}" {% if comment.is_verified %}checked{% endif %}>
+            </td>         
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+</div>
+<script src="{% static 'js/admin.js' %}"></script>
+{% endblock %} 

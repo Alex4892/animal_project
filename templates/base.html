@@ -23,6 +23,11 @@
                     <a class="nav-link" href="{% url 'animals:add_animal' %}">Подать объявление о пропаже</a>
                     {% comment %} <a class="nav-link active" aria-current="page" href="#">Объявление о пропаже животного</a> {% endcomment %}
                   </li>
+                  {% if user.is_staff %}
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'users:admin_dashboard' %}">Админ панель</a>
+                  </li>
+                  {% endif %}
                   <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Найти для себя питомца</a>
                   </li>

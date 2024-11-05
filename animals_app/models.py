@@ -6,7 +6,7 @@ User = get_user_model()
 class Kind(models.Model):
     name = models.CharField(
         max_length=100,
-        verbose_name="Вид"
+        verbose_name="Вид животного"
     )
     def __str__(self):
         return self.name
@@ -21,7 +21,7 @@ class Animal(models.Model):
     )
     kind = models.ManyToManyField(
         Kind,
-        verbose_name='Виды'
+        verbose_name='Вид животного'
     )
     nickname = models.TextField(
         max_length=20,

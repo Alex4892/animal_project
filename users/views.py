@@ -1,15 +1,29 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.db import transaction
 
 from animals_app.models import Animal
+from comments_app.models import Comment
 from .forms import CustomUserCreationForm, CustomAuthenticationForm
 
 @login_required(login_url='users:login')
 def view_profile(request):
     user_animals = Animal.objects.filter(submit=request.user)
     return render(request, 'users/profile.html', {'user_animals': user_animals})
+
+def is_admin(user):
+    return user.is_authenticated and user.is_staff
+@login_required(login_url='users:login')
+@user_passes_test(is_admin)
+def view_admin_dashboard(request):
+    animals = Animal.objects.all()
+    comments = Comment.objects.all()
+    context = {
+        'animals': animals,
+        'comments': comments
+    }
+    return render(request, 'users/admin.html', context)
 
 @transaction.atomic
 def register_user_view(request):
