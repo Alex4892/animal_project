@@ -1,13 +1,18 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
+from django.core.paginator import Paginator
+
 
 from .models import Animal
 from .forms import AnimalForm
 from comments_app.forms import CommentForm
 
 def view_animals(request):
-    animals = Animal.objects.all()
+    animals_list = Animal.objects.all()
+    paginator = Paginator(animals_list, 8)
+    page_number = request.GET.get('page')
+    animals = paginator.get_page(page_number)
     context = {
         "animals": animals
     }
