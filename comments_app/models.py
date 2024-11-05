@@ -29,7 +29,7 @@ class Comment(models.Model):
     )
     is_verified = models.BooleanField(
         default=False,
-        verbose_name='Проверен администратором'
+        verbose_name='Проверен администратором?'
     )
     class Meta:
         verbose_name = 'Комментарий'

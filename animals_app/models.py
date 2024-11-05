@@ -59,6 +59,10 @@ class Animal(models.Model):
         auto_now_add=True,
         verbose_name='Дата подачи объявления'
     )
+    is_verified = models.BooleanField(
+        default=False,
+        verbose_name='Проверено администратором?'
+    )
     def __str__(self):
         return self.title
     
