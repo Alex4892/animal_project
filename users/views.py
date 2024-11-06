@@ -17,8 +17,8 @@ def is_admin(user):
 @login_required(login_url='users:login')
 @user_passes_test(is_admin)
 def view_admin_dashboard(request):
-    animals = Animal.objects.all()
-    comments = Comment.objects.all()
+    animals = Animal.objects.filter(is_verified=False)
+    comments = Comment.objects.filter(is_verified=False)
     context = {
         'animals': animals,
         'comments': comments
