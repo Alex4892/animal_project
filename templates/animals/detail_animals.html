@@ -8,7 +8,7 @@
     <h1>{{ animal.title }}</h1>
 </div>
 <div>
-    <h3>Вид:
+    <h3>Вид животного:
       {% for kind in kinds %}
         {{ kind }}{% if not forloop.last %}, {% endif %}
       {% endfor %}

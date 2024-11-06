@@ -45,10 +45,6 @@ class Animal(models.Model):
         null=True,
         verbose_name='Изображение'
     )
-    # quantity = models.PositiveIntegerField(
-    #     default=0,
-    #     verbose_name='Количество'
-    # )
     submit = models.ForeignKey(
         User,
         related_name="animals",
