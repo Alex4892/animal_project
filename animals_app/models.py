@@ -10,10 +10,26 @@ class Kind(models.Model):
     )
     def __str__(self):
         return self.name
-    
+
     class Meta:
         verbose_name = "Вид"
         verbose_name_plural = "Виды"
+
+class PostImage(models.Model):
+    image = models.ImageField(
+        upload_to='animals/',
+        blank=True,
+        null=True,
+        verbose_name='Фото'
+    )
+    images = models.ImageField(
+        upload_to = 'animals/'
+    )
+
+    class Meta:
+        verbose_name = "Фото"
+        verbose_name_plural = "Фото"
+
 class Animal(models.Model):
     title = models.CharField(
         max_length=100,
@@ -43,7 +59,7 @@ class Animal(models.Model):
         upload_to='animals/',
         blank=True,
         null=True,
-        verbose_name='Изображение'
+        verbose_name='Фото'
     )
     submit = models.ForeignKey(
         User,

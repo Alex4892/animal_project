@@ -20,7 +20,7 @@
               <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                   <li class="nav-item">
-                    <a class="nav-link" href="{% url 'animals:add_animal' %}">Подать объявление о пропаже</a>
+                    <a class="nav-link active" aria-current="page" href="{% url 'animals:add_animal' %}">Подать объявление о пропаже</a>
                     {% comment %} <a class="nav-link active" aria-current="page" href="#">Объявление о пропаже животного</a> {% endcomment %}
                   </li>
                   {% if user.is_staff %}
@@ -32,7 +32,7 @@
                     <a class="nav-link active" aria-current="page" href="#">Найти для себя питомца</a>
                   </li>
                   <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link active dropdown-toggle" aria-current="page" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Полезные ссылки
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
