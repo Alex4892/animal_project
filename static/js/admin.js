@@ -1,4 +1,5 @@
-document.addEventListener("DOMContentLoaded", function () {
+    import { getCookie } from "./utils.js";
+    function updateBookStatus() {
     document.querySelectorAll(".animal-switch").forEach(switchElement => {
         switchElement.addEventListener("change", function () {
             const animalId = this.getAttribute("data-animal-id");
@@ -19,6 +20,9 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     });
+}
+
+function updateCommentStatus() {
     document.querySelectorAll(".comment-switch").forEach(switchElement => {
         switchElement.addEventListener("change", function () {
             const commentId = this.getAttribute("data-comment-id");
@@ -39,18 +43,9 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     });
-    function getCookie(name) {
-        let cookieValue = null;
-        if (document.cookie && document.cookie !== "") {
-            const cookies = document.cookie.split(";");
-            for (let i = 0; i < cookies.length; i++) {
-                const cookie = cookies[i].trim();
-                if (cookie.substring(0, name.length + 1) === (name + "=")) {
-                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                    break;
-                }
-            }
-        }
-        return cookieValue;
-    }
-});
+}
+
+export {
+    updateAnimalStatus,
+    updateCommentStatus
+}
