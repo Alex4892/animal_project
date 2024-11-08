@@ -86,6 +86,10 @@ class Animal(models.Model):
         max_length=100,
         verbose_name='Приметы'
     )
+    quantity = models.PositiveIntegerField(
+        default=0,
+        verbose_name='Количество животных'
+    )
     city = models.TextField(
         max_length=30,
         verbose_name='Город'
