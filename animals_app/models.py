@@ -17,6 +17,19 @@ class Target(models.Model):
         verbose_name = "Цель"
         verbose_name_plural = "Цели"
 
+class House(models.Model):
+    name = models.CharField(
+        max_length=100,
+        verbose_name="Цель объявления"
+    )
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Цель для нового дома"
+        verbose_name_plural = "Цели для нового дома"
+
 
 class Kind(models.Model):
     name = models.CharField(
@@ -57,6 +70,10 @@ class Animal(models.Model):
         Kind,
         verbose_name='Вид животного'
     )
+    # house = models.ManyToManyField(
+    #     House,
+    #     verbose_name='Цель объявления'
+    # )
     nickname = models.TextField(
         max_length=20,
         verbose_name='Кличка'

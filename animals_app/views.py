@@ -56,6 +56,28 @@ def add_animal_view(request):
     return render(request, 'animals/add_animal.html', {'form': form})
 
 
+
+# @login_required(login_url='users:login')
+# def add_animal_house_view(request):
+#     if request.method == 'POST':
+#         form = AnimalForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             animal = form.save(commit=False)
+#             animal.submit = request.user
+#             animal.save()
+#             houses = form.cleaned_data.get('house')
+#             animal.house.set(houses)
+#             animal.save()
+#             kinds = form.cleaned_data.get('kind')
+#             animal.kind.set(kinds)
+#             animal.save()
+#             return redirect('animals:index')
+#     else:
+#         form = AnimalForm()
+#     return render(request, 'animals/add_animal_house.html', {'form': form})
+
+
+
 @login_required(login_url='users:login')
 def edit_animal_view(request, animal_id):
     animal = get_object_or_404(Animal, id=animal_id)

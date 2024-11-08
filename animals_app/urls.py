@@ -11,6 +11,7 @@ urlpatterns = [
     path('detail_animal/<int:animal_id>/',
          view_detail_animal, name='detail_animal'),
     path('add_animal/', add_animal_view, name='add_animal'),
+#     path('add_animal_house/', add_animal_house_view, name='add_animal_house'),
     path('edit_animal/<int:animal_id>/', edit_animal_view, name='edit_animal'),
     path('delete_animal/<int:animal_id>/',
          delete_animal_view, name='delete_animal'),
