@@ -5,7 +5,7 @@
 {% endblock %}
 {% block content %}
 <div>
-    <h1>{{ animal.title }}</h1>
+    <h1>{{ animal.target }}</h1>
 </div>
 <div>
     <h3>Вид животного:
@@ -14,6 +14,7 @@
       {% endfor %}
     </h3>
     <h3>Кличка: {{ animal.nickname }}</h3>
+    <h3>Город: {{ animal.city }}</h3>
     <p>Описание: {{ animal.description }}</p>
     <p>Номер телефона: {{ animal.phone_number }}</p>
     <p>Приметы: {{ animal.signs }}</p>
@@ -34,7 +35,7 @@
     <div class="card-body">
       <div class="d-flex justify-content-between border-top">
         <div>
-          <h5 class="card-title">{{comment}}</h5>
+          <h5 class="card-target">{{comment}}</h5>
         </div>
         {% if user.is_authenticated and user == comment.author %}
         <div class="btn-group" style="height:40px" role="group">
@@ -50,7 +51,7 @@
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Modal 1</h1>
+            <h1 class="modal-target fs-5" id="exampleModalToggleLabel">Modal 1</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
