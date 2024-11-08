@@ -13,7 +13,9 @@
         <div class="card border-dark" style="width: 90%;">
           <img src="{% if animal.image %} {{ animal.image.url }} {% else %} {% static 'img/1.jpg'%} {% endif %}">
           <div class="card-body">
-            <h5 class="card-title">{{ animal.target }}</h5>
+            {% for target in animal.target.all %}
+            <h5 class="card-title">{{ target.name }}</h5>
+            {% endfor %}
             <p class="card-text">{{ animal.nickname }}</p>
             <p class="card-text">{{ animal.description }}</p>
             <a href="{% url 'animals:detail_animal' animal.id %}" class="btn btn-primary">Посмотреть</a>

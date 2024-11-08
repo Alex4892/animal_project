@@ -4,13 +4,14 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
+
 class Comment(models.Model):
     animal = models.ForeignKey(
         Animal, on_delete=models.CASCADE,
         related_name='comments'
     )
     author = models.ForeignKey(
-        User, 
+        User,
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
@@ -31,13 +32,13 @@ class Comment(models.Model):
         default=False,
         verbose_name='Проверен администратором?'
     )
+
     class Meta:
         verbose_name = 'Комментарий'
         verbose_name_plural = 'Комментарии'
 
     def __str__(self):
         return f'Комментарий от {self.email} к объявлению'
-        # return f'Комментарий от {self.email} к объявлению о виде животном "{self.animal.kind}"'
 
 
 # Create your models here.

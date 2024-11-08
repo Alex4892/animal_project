@@ -3,27 +3,34 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
+
 class Target(models.Model):
     name = models.CharField(
         max_length=100,
         verbose_name="Цель объявления"
     )
+
     def __str__(self):
         return self.name
+
     class Meta:
         verbose_name = "Цель"
         verbose_name_plural = "Цели"
+
+
 class Kind(models.Model):
     name = models.CharField(
         max_length=100,
         verbose_name="Вид животного"
     )
+
     def __str__(self):
         return self.name
 
     class Meta:
         verbose_name = "Вид"
         verbose_name_plural = "Виды"
+
 
 class PostImage(models.Model):
     image = models.ImageField(
@@ -33,12 +40,13 @@ class PostImage(models.Model):
         verbose_name='Фото'
     )
     images = models.ImageField(
-        upload_to = 'animals/'
+        upload_to='animals/'
     )
 
     class Meta:
         verbose_name = "Фото"
         verbose_name_plural = "Фото"
+
 
 class Animal(models.Model):
     target = models.ManyToManyField(
@@ -93,9 +101,10 @@ class Animal(models.Model):
         default=False,
         verbose_name='Проверено администратором?'
     )
+       
     def __str__(self):
         return self.nickname
-    
+ 
     def delete(self, *args, **kwargs):
         if self.image:
             self.image.delete()

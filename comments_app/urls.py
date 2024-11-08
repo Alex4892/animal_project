@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import add_comment_view, edit_comment_view, delete_comment_view, change_comment_status
+from .views import (add_comment_view, edit_comment_view, 
+                   delete_comment_view, change_comment_status)
 
 
 app_name = "comments"
