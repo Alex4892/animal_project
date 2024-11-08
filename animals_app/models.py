@@ -57,6 +57,10 @@ class Animal(models.Model):
         max_length=500,
         verbose_name='Описание'
     )
+    signs = models.TextField(
+        max_length=100,
+        verbose_name='Приметы'
+    )
     city = models.TextField(
         max_length=30,
         verbose_name='Город'
@@ -65,9 +69,9 @@ class Animal(models.Model):
         max_length=15,
         verbose_name='Номер телефона'
     )
-    signs = models.TextField(
+    contact_people = models.CharField(
         max_length=100,
-        verbose_name='Приметы'
+        verbose_name='Контактное лицо'
     )
     image = models.ImageField(
         upload_to='animals/',

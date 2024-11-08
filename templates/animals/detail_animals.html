@@ -4,20 +4,60 @@
   Главная страница
 {% endblock %}
 {% block content %}
-<div>
+{% comment %} <div>
     <h1>{{ animal.target }}</h1>
-</div>
+</div> {% endcomment %}
 <div>
-    <h3>Вид животного:
+    {% comment %} <h4>Вид животного:
       {% for kind in kinds %}
         {{ kind }}{% if not forloop.last %}, {% endif %}
       {% endfor %}
-    </h3>
-    <h3>Кличка: {{ animal.nickname }}</h3>
-    <h3>Город: {{ animal.city }}</h3>
-    <p>Описание: {{ animal.description }}</p>
-    <p>Номер телефона: {{ animal.phone_number }}</p>
-    <p>Приметы: {{ animal.signs }}</p>
+    </h4>
+    <h4>Кличка: {{ animal.nickname }}</h4>
+    <h4>Описание: {{ animal.description }}</h4>
+    <h4>Приметы: {{ animal.signs }}</h4>
+    <h4>Город: {{ animal.city }}</h4>
+    <h4>Номер телефона: {{ animal.phone_number }}</h4>
+    <h4>Контактное лицо: {{ animal.contact_people }}</h4> {% endcomment %}
+
+    <table class="table">
+      <thead>
+          <th scope="col">{{ animal.target }}</th>
+          <th><th><th><th><th><th><th><th><th><th><th><th><th><th><th><th><th><th><th><th><th><th><th><th>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Вид животного</th>
+          <td>{% for kind in kinds %}
+            {{ kind }}{% if not forloop.last %}, {% endif %}
+          {% endfor %}</td>
+        </tr>
+        <tr>
+          <th scope="row">Кличка</th>
+          <td>{{ animal.nickname }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Описание</th>
+          <td>{{ animal.description }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Приметы</th>
+          <td>{{ animal.signs }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Город</th>
+          <td>{{ animal.city }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Номер телефона</th>
+          <td>{{ animal.phone_number }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Контактное лицо</th>
+          <td>{{ animal.contact_people }}</td>
+        </tr>
+      </tbody>
+    </table>
 </div>
 
 {% if user.is_authenticated and user == animal.submit %}
