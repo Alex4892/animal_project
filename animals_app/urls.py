@@ -1,6 +1,7 @@
 from django.urls import path
 
 from .views import (view_animals, view_detail_animal, add_animal_view,
+                    # add_animal_house_view,
                     delete_animal_view, edit_animal_view, change_animal_status)
 
 

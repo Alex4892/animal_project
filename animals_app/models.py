@@ -135,4 +135,25 @@ class Animal(models.Model):
         verbose_name = "Объявление"
         verbose_name_plural = "Объявления"
 
+
+# class House(models.Model):
+#     house = models.ManyToManyField(
+#         House,
+#         verbose_name='Цель объявления'
+#     )
+
+#     kind = models.ManyToManyField(
+#         Kind,
+#         verbose_name='Вид животного'
+#     )
+
+#     description = models.TextField(
+#         max_length=500,
+#         verbose_name='Описание'
+#     )
+
+#     class Meta:
+#         verbose_name = "Объявление"
+#         verbose_name_plural = "Объявления"
+
 # Create your models here.

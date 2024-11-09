@@ -1,5 +1,6 @@
 from django import forms
 from .models import Animal
+# from .models import House
 
 
 class AnimalForm(forms.ModelForm):
@@ -18,3 +19,13 @@ class AnimalForm(forms.ModelForm):
             'contact_people': forms.TextInput(attrs={'class': 'form-control'}),
             'image': forms.ClearableFileInput(attrs={'class': 'form-control', 'name':'image'}),
         }
+
+# class HouseForm(forms.ModelForm):
+#     class Meta:
+#         model = House
+#         fields = ['house', 'kind', 'description']
+#         widgets = {
+#             'house': forms.SelectMultiple(attrs={'class': 'form-control'}),
+#             'kind': forms.SelectMultiple(attrs={'class': 'form-control'}),
+#             'description': forms.Textarea(attrs={'class': 'form-control'}),
+#         }

@@ -19,6 +19,14 @@
     <h5>Номер телефона: {{ animal.phone_number }}</h5>
     <h5>Контактное лицо: {{ animal.contact_people }}</h5>
 
+    {% comment %} <h5>{% for house in animal.house.all %} {{ target.name }}
+      {% endfor %}</h5>
+    <h5>Вид животного:
+      {% for kind in kinds %} {{ kind }} {% if not forloop.last %}, {% endif %}
+      {% endfor %}
+    </h5>
+    <h5>Описание: {{ animal.description }}</h5> {% endcomment %}
+
 {% if user.is_authenticated and user == animal.submit %}
   <div class="btn-group" role="group">
     <a href="{% url 'animals:delete_animal' animal.id %}" class="btn btn-danger">Удалить</a>

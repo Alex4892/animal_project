@@ -19,6 +19,12 @@
             <p class="card-text">{{ animal.nickname }}</p>
             <p class="card-text">{{ animal.description }}</p>
             <a href="{% url 'animals:detail_animal' animal.id %}" class="btn btn-primary">Посмотреть</a>
+
+            {% comment %} {% for house in animal.house.all %}
+            <h5 class="card-title">{{ house.name }}</h5>
+            {% endfor %}
+            <p class="card-text">{{ animal.description }}</p>
+            <a href="{% url 'animals:detail_animal' animal.id %}" class="btn btn-primary">Посмотреть</a> {% endcomment %}
           </div>
         </div>
       </div>
