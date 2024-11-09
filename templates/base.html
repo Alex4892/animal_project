@@ -38,9 +38,6 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
                       <li><a class="dropdown-item" href="#">Адреса ветеринарных клиник</a></li>
                       <li><a class="dropdown-item" href="#">Адреса волонтерских групп</a></li>
-                      {% comment %} <li><a class="dropdown-item" href="#">Другое действие</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">Что-то еще</a></li> {% endcomment %}
                     </ul>
                   </li>
                   {% comment %} <form class="d-flex">
@@ -50,6 +47,12 @@
                 </ul>
               </div>
               {% if user.is_authenticated %}
+                <a class="nav-link" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-substack" viewBox="0 0 16 16">
+                <path d="M15 3.604H1v1.891h14v-1.89ZM1 7.208V16l7-3.926L15 16V7.208H1ZM15 0H1v1.89h14V0Z"/>
+              </svg>
+              Закладка
+            </a>
               <ul class="navbar-nav float-sm-end">
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'users:profile' %}">{% if user.first_name %} {{user.first_name}} {% else %} {{ user.username }} {% endif %}</a>
