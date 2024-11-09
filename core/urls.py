@@ -24,6 +24,7 @@ urlpatterns = [
     path('', include('animals_app.urls', namespace='animals')),
     path('', include('comments_app.urls', namespace='comments')),
     path('', include('users.urls', namespace='users')),
+    path('', include('substack_app.urls', namespace='substack')),
 ]
 
 if settings.DEBUG:

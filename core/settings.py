@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'comments_app',
     'users',
     'phonenumber_field',
+    'substack_app',
 ]
 
 MIDDLEWARE = [
