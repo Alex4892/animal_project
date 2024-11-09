@@ -5,6 +5,28 @@
 {% endblock %}
 {% block content %}
 <div>
-    
+    <div class="container">
+        <div class="row">
+          {% for substack_animal in substack_animals %}
+          <div class="col-12 col-md-6 col-lg-3 mb-4 d-flex">
+            <div class="card" style="width: 18rem">
+              <img
+                src="{% if substack_animal.animal.image %} {{ substack_animal.animal.image.url }} {% else %} 
+                {% static 'img/1.jpg' %} {% endif %}"
+              />
+              <div class="card-body">
+                <p class="card-text">{% for target in animal.target.all %} {{ target.name }}
+                  {% endfor %}</p> 
+                <p class="card-text">Вид животного:
+                  {% for kind in kinds %} {{ kind }} {% if not forloop.last %}, {% endif %}
+                  {% endfor %}</p> 
+                <p class="card-text">Кличка: {{ substack_animal.animal.nickname }}</p> 
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      
 </div>
 {% endblock %}

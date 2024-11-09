@@ -1,5 +1,5 @@
     import { getCookie } from "./utils.js";
-    function updateBookStatus() {
+    function updateAnimalStatus() {
     document.querySelectorAll(".animal-switch").forEach(switchElement => {
         switchElement.addEventListener("change", function () {
             const animalId = this.getAttribute("data-animal-id");
