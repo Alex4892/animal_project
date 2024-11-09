@@ -21,6 +21,8 @@
                   {% for kind in kinds %} {{ kind }} {% if not forloop.last %}, {% endif %}
                   {% endfor %}</p> 
                 <p class="card-text">Кличка: {{ substack_animal.animal.nickname }}</p> 
+                <button type="button" class="btn btn-danger btn-remove-substack" data-substack-animal-id="{{ substack_animal.id }}">
+                  Удалить</button>
               </div>
             </div>
           </div>

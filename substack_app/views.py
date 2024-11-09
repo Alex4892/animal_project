@@ -16,19 +16,34 @@ def view_substack(request):
     return render(request, 'substack/substack.html', context)
 
 
-@login_required
 @require_POST
+@login_required(login_url='users:login')
 def add_to_substack(request):
     animal_id = request.POST.get("animal_id")
-    if animal_id:
+    try:
+        animal = Animal.objects.get(id=animal_id)
+        if animal.quantity == 0:
+            return JsonResponse({"status": "error", "message": "В остатке нет объявлений"})
+        substack_item, created = Substack.objects.get_or_create(
+            user=request.user, animal=animal)
+        if not created:
+            substack_item.quantity += 1
+            substack_item.save()
+        return JsonResponse({"status": "success", "message": "Объявление добавлено в закладку"})
+    except Animal.DoesNotExist:
+        return JsonResponse({"status": "error", "message": "Объявление не найдено"})
+
+
+
+@require_POST
+@login_required(login_url='users:login')
+def remove_from_substack(request):
+    if request.method == "POST":
+        substack_animal_id = request.POST.get("substack_animal_id")
         try:
-            animal = Animal.objects.get(id=animal_id)
-            substack_item, created = Substack.objects.get_or_create(
-                user=request.user, animal=animal)
-            if not created:
-                substack_item.quantity += 1
-                substack_item.save()
-            return JsonResponse({"status": "success", "message": "Объявление добавлено в закладку"})
+            substack_animal = Substack.objects.get(id=substack_animal_id)
+            substack_animal.delete()
+            return JsonResponse({"status": "success", "message": "Объявление удалено из закладки"})
         except Animal.DoesNotExist:
             return JsonResponse({"status": "error", "message": "Объявление не найдено"})
     return JsonResponse({"status": "error", "message": "Некорректный запрос"})

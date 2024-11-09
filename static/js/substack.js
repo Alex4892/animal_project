@@ -26,4 +26,32 @@ function addSubstackHandler() {
     });
   });
 }
-export { addSubstackHandler };
+
+async function sendRemoveFromSubstackRequest(substackAnimalId) {
+  const response = await fetch(`/substack/remove_from_substack/`, {
+    method: "POST",
+    headers: {
+      "X-CSRFToken": getCookie("csrftoken"),
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: `substack_animal_id=${substackAnimalId}`,
+  });
+  return response.json();
+}
+function handleRemoveFromSubstackResponse(data, substackAnimalId) {
+  if (data.status === "success") {
+    document.querySelector(`[data-substack-animal-id="${substackAnimalId}"]`).closest(".col-12").remove();
+    alert(data.message);
+  } else {
+    alert(data.message);
+  }
+}
+function removeSubstackHandler() {
+  document.querySelectorAll(".btn-remove-substack").forEach((button) => {
+    button.addEventListener("click", function () {
+      const substackAnimalId = this.getAttribute("data-substack-animal-id");
+      sendRemoveFromSubstackRequest(substackAnimalId).then((data) => handleRemoveFromSubstackResponse(data, substackAnimalId));
+    });
+  });
+}
+export { addSubstackHandler, removeSubstackHandler };
