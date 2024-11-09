@@ -87,7 +87,7 @@ class Animal(models.Model):
         verbose_name='Приметы'
     )
     quantity = models.PositiveIntegerField(
-        default=0,
+        default=1,
         verbose_name='Количество животных'
     )
     city = models.TextField(
