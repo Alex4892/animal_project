@@ -4,37 +4,31 @@
   Закладка
 {% endblock %}
 {% block content %}
-
 <div>
-  {% comment %} {% if animals %}   {% endcomment %}
     <div class="container">
         <div class="row">
           {% for substack_animal in substack_animals %}
           <div class="col-12 col-md-6 col-lg-3 mb-4 d-flex">
-            <div class="card border-dark" style="width: 18rem">
+            <div class="card" style="width: 18rem">
               <img
                 src="{% if substack_animal.animal.image %} {{ substack_animal.animal.image.url }} {% else %} 
                 {% static 'img/1.jpg' %} {% endif %}"
               />
               <div class="card-body">
-                <p class="card-text">{{ substack_animal.animal.target }}</p> 
+                <p class="card-text">{% for target in animal.target.all %} {{ target.name }}
+                  {% endfor %}</p> 
                 <p class="card-text">Вид животного:
-                  {{ substack_animal.animal.kind }}</p> 
+                  {% for kind in kinds %} {{ kind }} {% if not forloop.last %}, {% endif %}
+                  {% endfor %}</p> 
                 <p class="card-text">Кличка: {{ substack_animal.animal.nickname }}</p> 
                 <button type="button" class="btn btn-primary btn-remove-substack" data-substack-animal-id="{{ substack_animal.id }}">
                   Удалить</button>
-                  
               </div>
             </div>
           </div>
           {% endfor %}
         </div>
-
-        {% comment %} {% else %}
-        <h1>Закладок нет</h1>
-        {% endif %} {% endcomment %}
-
-      </div>  
+      </div>
+      
 </div>
- 
 {% endblock %}
