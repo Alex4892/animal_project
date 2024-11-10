@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'substack_app',
     'house_app',
     'clinic_app',
+    'group_app',
 ]
 
 MIDDLEWARE = [

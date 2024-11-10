@@ -27,6 +27,7 @@ urlpatterns = [
     path('', include('substack_app.urls', namespace='substack')),
     # path('', include('house_app.urls', namespace='house'))
     # path('', include('clinic_app.urls', namespace='clinic')),
+    # path('', include('group_app.urls', namespace='group')),
 ]
 
 if settings.DEBUG:
