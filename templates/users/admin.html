@@ -10,8 +10,8 @@
   <table class="table text-center">
     <thead>
       <tr>
-        <th scope="col">Заголовок</th>
-        {% comment %} <th scope="col">Вид животного</th> {% endcomment %}
+        <th scope="col">Цель объявления</th>
+        <th scope="col">Вид животного</th>
         <th scope="col">Кличка</th>
         <th scope="col">Номер телефона</th>
         <th scope="col">Приметы</th>
@@ -21,8 +21,10 @@
     <tbody>
         {% for animal in animals %}
         <tr>
-          <td>{{ animal.target }}</td>
-          {% comment %} <td>{{ animal.kind }}</td> {% endcomment %}
+          <td>{% for target in animal.target.all %} {{ target.name }}
+            {% endfor %}</td>
+          <td> {% for kind in animal.kind.all %} {{ kind.name }}
+      {% endfor %}</td>
           <td>{{ animal.nickname }}</td>
           <td>{{ animal.phone_number }}</td>
           <td>{{ animal.signs }}</td>
