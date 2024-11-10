@@ -26,6 +26,7 @@ urlpatterns = [
     path('', include('users.urls', namespace='users')),
     path('', include('substack_app.urls', namespace='substack')),
     # path('', include('house_app.urls', namespace='house'))
+    # path('', include('clinic_app.urls', namespace='clinic')),
 ]
 
 if settings.DEBUG:
