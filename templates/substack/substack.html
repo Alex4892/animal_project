@@ -4,8 +4,10 @@
   Закладка
 {% endblock %}
 {% block content %}
+
 <div>
     <div class="container">
+      {% if substack_animals %}
         <div class="row">
           {% for substack_animal in substack_animals %}
           <div class="col-12 col-md-6 col-lg-3 mb-4 d-flex">
@@ -28,7 +30,11 @@
           </div>
           {% endfor %}
         </div>
-      </div>
       
+      </div>
+      {% else %}
+      <h2>Закладок нет</h2>
+      {% endif %}
 </div>
+
 {% endblock %}
