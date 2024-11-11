@@ -22,7 +22,8 @@ class Substack(models.Model):
         unique_together = ('user', 'animal')
         verbose_name = "Закладка"
         verbose_name_plural = "Закладки"
+
     def __str__(self):
-        return f"{self.user.username} - {self.animal.name} (x{self.quantity})"
+        return f"{self.user.username} - {self.animal} (x{self.quantity})"
 
 # Create your models here.
