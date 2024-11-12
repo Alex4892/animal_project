@@ -1,4 +1,4 @@
-from django.shortcuts import render 
+# from django.shortcuts import render
 # get_object_or_404, redirect
 # from django.contrib.auth.decorators import login_required, user_passes_test
 # from django.core.exceptions import PermissionDenied
@@ -9,7 +9,6 @@ from django.shortcuts import render
 
 # from .models import House
 # from .forms import HouseForm
-
 
 
 # def view_animals(request):
@@ -37,7 +36,6 @@ from django.shortcuts import render
 #     return render(request, "animals/detail_animals.html", context=context)
 
 
-
 # @login_required(login_url='users:login')
 # def add_animal_house_view(request):
 #     if request.method == 'POST':
@@ -56,7 +54,6 @@ from django.shortcuts import render
 #     else:
 #         form = HouseForm()
 #     return render(request, 'animals/add_animal_house.html', {'form': form})
-
 
 
 # @login_required(login_url='users:login')
@@ -88,14 +85,16 @@ from django.shortcuts import render
 
 
 # @require_POST
-# @user_passes_test(lambda u: u.is_superuser)  
+# @user_passes_test(lambda u: u.is_superuser)
 # def change_animal_status(request, animal_id):
 #     try:
 #         animal = Animal.objects.get(id=animal_id)
 #         animal.is_verified = not animal.is_verified
 #         animal.save()
-#         return JsonResponse({"status": "success", "is_verified": animal.is_verified})
+#         return JsonResponse({"status": "success",
+#                              "is_verified": animal.is_verified})
 #     except Animal.DoesNotExist:
-#         return JsonResponse({"status": "error", "message": "Объявление не найдено"})
+#         return JsonResponse({"status": "error",
+#                              "message": "Объявление не найдено"})
 
 # Create your views here.

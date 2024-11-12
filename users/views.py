@@ -11,7 +11,8 @@ from .forms import CustomUserCreationForm, CustomAuthenticationForm
 @login_required(login_url='users:login')
 def view_profile(request):
     user_animals = Animal.objects.filter(submit=request.user)
-    return render(request, 'users/profile.html', {'user_animals': user_animals})
+    return render(request, 'users/profile.html',
+                           {'user_animals': user_animals})
 
 
 def is_admin(user):

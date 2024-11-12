@@ -17,6 +17,7 @@ class Target(models.Model):
         verbose_name = "Цель"
         verbose_name_plural = "Цели"
 
+
 class House(models.Model):
     name = models.CharField(
         max_length=100,
@@ -122,15 +123,15 @@ class Animal(models.Model):
         default=False,
         verbose_name='Проверено администратором?'
     )
-       
+
     def __str__(self):
         return self.nickname
- 
+
     def delete(self, *args, **kwargs):
         if self.image:
             self.image.delete()
         super().delete(*args, **kwargs)
-    
+
     class Meta:
         verbose_name = "Объявление"
         verbose_name_plural = "Объявления"

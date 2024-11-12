@@ -1,4 +1,4 @@
-from django.db import models
+# from django.db import models
 # from django.contrib.auth import get_user_model
 
 # User = get_user_model()
@@ -32,7 +32,6 @@ from django.db import models
 #         verbose_name_plural = "Виды"
 
 
-
 # class House(models.Model):
 #     house = models.ManyToManyField(
 #         House,
@@ -54,4 +53,3 @@ from django.db import models
 #         verbose_name_plural = "Объявления"
 
 # Create your models here.
-

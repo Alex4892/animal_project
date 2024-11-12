@@ -6,7 +6,9 @@ from .models import Animal
 class AnimalForm(forms.ModelForm):
     class Meta:
         model = Animal
-        fields = ['target', 'kind', 'nickname', 'description', 'signs', 'quantity', 'city', 'phone_number', 'contact_people', 'image']
+        fields = ['target', 'kind', 'nickname', 'description', 'signs',
+                  'quantity', 'city', 'phone_number',
+                  'contact_people', 'image']
         widgets = {
             'target': forms.SelectMultiple(attrs={'class': 'form-control'}),
             'kind': forms.SelectMultiple(attrs={'class': 'form-control'}),
@@ -17,7 +19,8 @@ class AnimalForm(forms.ModelForm):
             'city': forms.TextInput(attrs={'class': 'form-control'}),
             'phone_number': forms.NumberInput(attrs={'class': 'form-control'}),
             'contact_people': forms.TextInput(attrs={'class': 'form-control'}),
-            'image': forms.ClearableFileInput(attrs={'class': 'form-control', 'name':'image'}),
+            'image': forms.ClearableFileInput(attrs={'class': 'form-control',
+                                                     'name': 'image'}),
         }
 
 # class HouseForm(forms.ModelForm):

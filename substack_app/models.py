@@ -5,6 +5,8 @@ from animals_app.models import Animal
 
 
 User = get_user_model()
+
+
 class Substack(models.Model):
     user = models.ForeignKey(
         User,
@@ -18,6 +20,7 @@ class Substack(models.Model):
     quantity = models.PositiveIntegerField(
         default=1
     )
+
     class Meta:
         unique_together = ('user', 'animal')
         verbose_name = "Закладка"

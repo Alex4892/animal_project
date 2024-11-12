@@ -57,7 +57,6 @@ def add_animal_view(request):
     return render(request, 'animals/add_animal.html', {'form': form})
 
 
-
 # @login_required(login_url='users:login')
 # def add_animal_house_view(request):
 #     if request.method == 'POST':
@@ -76,7 +75,6 @@ def add_animal_view(request):
 #     else:
 #         form = HouseForm()
 #     return render(request, 'animals/add_animal_house.html', {'form': form})
-
 
 
 @login_required(login_url='users:login')
@@ -108,13 +106,15 @@ def delete_animal_view(request, animal_id):
 
 
 @require_POST
-@user_passes_test(lambda u: u.is_superuser)  
+@user_passes_test(lambda u: u.is_superuser)
 def change_animal_status(request, animal_id):
     try:
         animal = Animal.objects.get(id=animal_id)
         animal.is_verified = not animal.is_verified
         animal.save()
-        return JsonResponse({"status": "success", "is_verified": animal.is_verified})
+        return JsonResponse({"status": "success",
+                            "is_verified": animal.is_verified})
     except Animal.DoesNotExist:
-        return JsonResponse({"status": "error", "message": "Объявление не найдено"})
+        return JsonResponse({"status": "error",
+                             "message": "Объявление не найдено"})
 # Create your views here.

@@ -20,7 +20,7 @@ class User(AbstractUser):
         upload_to='users/',
         blank=True
     )
-   
+
     class Meta:
         verbose_name = 'Пользователь'
         verbose_name_plural = 'Пользователи'
