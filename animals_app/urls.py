@@ -2,7 +2,7 @@ from django.urls import path
 
 from .views import (view_animals, view_detail_animal, add_animal_view,
                     # add_animal_house_view,
-                    delete_animal_view, edit_animal_view, change_animal_status)
+                    delete_animal_view, edit_animal_view, change_animal_status, filtered_animals_view)
 
 
 app_name = "animals"
@@ -19,4 +19,5 @@ urlpatterns = [
          delete_animal_view, name='delete_animal'),
     path('change-animal-status/<int:animal_id>/',
          change_animal_status, name='change_animal_status'),
+         path('filtered_animals/', filtered_animals_view, name='filtered_animals'),
 ]

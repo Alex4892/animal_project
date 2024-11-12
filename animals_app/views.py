@@ -92,6 +92,23 @@ def edit_animal_view(request, animal_id):
         form = AnimalForm(instance=animal)
     return render(request, 'animals/add_animal.html', {'form': form})
 
+def filtered_animals_view(request):
+    animals = Animal.objects.all()
+    target = request.GET.get('target', '').strip()
+    kind = request.GET.get('kind', '').strip()
+    print(kind)
+    if target:
+        animals = animals.filter(target__name__icontains=target)
+    if kind:
+        animals = animals.filter(kind__name__icontains=kind)
+    paginator = Paginator(animals, 8) 
+    page_number = request.GET.get('page')
+    animals_page = paginator.get_page(page_number)
+    context = {
+        'animals': animals_page
+    }
+    return render(request, 'animals/filtered_animals.html', context)
+
 
 @login_required(login_url='users:login')
 def delete_animal_view(request, animal_id):

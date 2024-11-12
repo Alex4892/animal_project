@@ -7,6 +7,23 @@
 
 {% if animals %}
 <div class="container">
+
+  <div class="mb-5 text-center">
+    <form method="get" action="{% url 'animals:filtered_animals' %}" class="row g-3 needs-validation" novalidate>
+      <div class="col-md-2">
+          <label for="animal_target" class="form-label">Цель объявления</label>
+          <input type="text" class="form-control" id="animal_target" name="target" value="{{ request.GET.target }}">
+      </div>
+      <div class="col-md-2">
+          <label for="kind" class="form-label">Вид животного</label>
+          <input type="text" class="form-control" id="kind" name="kind" value="{{ request.GET.kind }}">
+      </div>
+      <div class="col-md-2 align-self-end">
+          <button class="btn btn-primary" type="submit">Показать</button>
+      </div>
+  </form>
+</div>
+
   <div class="row">
     {% for animal in animals %}
       <div class="col-12 col-md-4 col-lg-3 mb-3 d-flex">
@@ -47,8 +64,11 @@
                 </svg>
               </button>              
             </div>
-            <p class="card-text">{{ animal.nickname }}</p>
-            <p class="card-text">{{ animal.description }}</p>
+            <p class="card-text">Вид животного: 
+              {% for kind in animal.kind.all %}
+              {{ kind.name }}
+              {% endfor %}</p>
+            <p class="card-text">Описание: {{ animal.description }}</p>
             <a href="{% url 'animals:detail_animal' animal.id %}" class="btn btn-primary">Посмотреть</a>
 
             {% comment %} {% for house in animal.house.all %}
