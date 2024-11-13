@@ -25,7 +25,6 @@ urlpatterns = [
     path('', include('comments_app.urls', namespace='comments')),
     path('', include('users.urls', namespace='users')),
     path('', include('substack_app.urls', namespace='substack')),
-    # path('', include('house_app.urls', namespace='house'))
     # path('', include('clinic_app.urls', namespace='clinic')),
     # path('', include('group_app.urls', namespace='group')),
 ]

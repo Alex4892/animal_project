@@ -22,13 +22,12 @@ def add_to_substack(request):
     animal_id = request.POST.get("animal_id")
     try:
         animal = Animal.objects.get(id=animal_id)
-        if animal.quantity == 0:
+        if animal == 0:
             return JsonResponse({"status": "error",
                                  "message": "В остатке нет объявлений"})
         substack_item, created = Substack.objects.get_or_create(
             user=request.user, animal=animal)
         if not created:
-            substack_item.quantity += 1
             substack_item.save()
         return JsonResponse({"status": "success", "message":
                             "Объявление добавлено в закладку"})

@@ -8,7 +8,6 @@ from django.http import JsonResponse
 
 from .models import Animal
 from .forms import AnimalForm
-# from .forms import HouseForm
 from comments_app.forms import CommentForm
 
 
@@ -55,26 +54,6 @@ def add_animal_view(request):
     else:
         form = AnimalForm()
     return render(request, 'animals/add_animal.html', {'form': form})
-
-
-# @login_required(login_url='users:login')
-# def add_animal_house_view(request):
-#     if request.method == 'POST':
-#         form = HouseForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             animal = form.save(commit=False)
-#             animal.submit = request.user
-#             animal.save()
-#             houses = form.cleaned_data.get('house')
-#             animal.house.set(houses)
-#             animal.save()
-#             kinds = form.cleaned_data.get('kind')
-#             animal.kind.set(kinds)
-#             animal.save()
-#             return redirect('animals:index')
-#     else:
-#         form = HouseForm()
-#     return render(request, 'animals/add_animal_house.html', {'form': form})
 
 
 @login_required(login_url='users:login')

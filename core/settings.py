@@ -49,9 +49,8 @@ INSTALLED_APPS = [
     'users',
     'phonenumber_field',
     'substack_app',
-    'house_app',
-    'clinic_app',
-    'group_app',
+    # 'clinic_app',
+    # 'group_app',
 ]
 
 MIDDLEWARE = [

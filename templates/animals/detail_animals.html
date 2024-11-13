@@ -14,18 +14,9 @@
     <h5>Кличка: {{ animal.nickname }}</h5>
     <h5>Описание: {{ animal.description }}</h5>
     <h5>Приметы: {{ animal.signs }}</h5>
-    <h5>Количество животных: {{ animal.quantity }}</h5>
     <h5>Город: {{ animal.city }}</h5>
     <h5>Номер телефона: {{ animal.phone_number }}</h5>
     <h5>Контактное лицо: {{ animal.contact_people }}</h5>
-
-    {% comment %} <h5>{% for house in animal.house.all %} {{ target.name }}
-      {% endfor %}</h5>
-    <h5>Вид животного:
-      {% for kind in kinds %} {{ kind }} {% if not forloop.last %}, {% endif %}
-      {% endfor %}
-    </h5>
-    <h5>Описание: {{ animal.description }}</h5> {% endcomment %}
 
 {% if user.is_authenticated and user == animal.submit %}
   <div class="btn-group" role="group">
