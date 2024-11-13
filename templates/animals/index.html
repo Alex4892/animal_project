@@ -64,8 +64,7 @@
                 </svg>
               </button>              
             </div>
-            <p class="card-text">Вид животного: 
-              {% for kind in animal.kind.all %}
+            <p class="card-text">Вид животного: {% for kind in animal.kind.all %}
               {{ kind.name }}
               {% endfor %}</p>
             <p class="card-text">Описание: {{ animal.description }}</p>

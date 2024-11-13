@@ -18,18 +18,18 @@ class Target(models.Model):
         verbose_name_plural = "Цели"
 
 
-class House(models.Model):
-    name = models.CharField(
-        max_length=100,
-        verbose_name="Цель объявления"
-    )
+# class House(models.Model):
+#     name = models.CharField(
+#         max_length=100,
+#         verbose_name="Цель объявления"
+#     )
 
-    def __str__(self):
-        return self.name
+#     def __str__(self):
+#         return self.name
 
-    class Meta:
-        verbose_name = "Цель для нового дома"
-        verbose_name_plural = "Цели для нового дома"
+#     class Meta:
+#         verbose_name = "Цель для нового дома"
+#         verbose_name_plural = "Цели для нового дома"
 
 
 class Kind(models.Model):
