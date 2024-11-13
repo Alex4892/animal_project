@@ -1,31 +1,33 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block lists %}
-  Главная страница
+  Страница фильтрации
 {% endblock %}
 {% block content %}
+
 {% if animals %}
   <div class="container">
 
     <div class="mb-5 text-center">
         <form method="get" action="{% url 'animals:filtered_animals' %}" class="row g-3 needs-validation" novalidate>
           <div class="col-md-2">
-              <label for="animal_target" class="form-label">Цель объявления</label>
+              <label for="animal_target" class="form-label"><b>Цель объявления</b></label>
               <input type="text" class="form-control" id="animal_target" name="target" value="{{ request.GET.target }}">
           </div>
           <div class="col-md-2">
-              <label for="kind" class="form-label">Вид животного</label>
+              <label for="kind" class="form-label"><b>Вид животного</b></label>
               <input type="text" class="form-control" id="kind" name="kind" value="{{ request.GET.kind }}">
           </div>
-          <div class="col-md-2 align-self-end">
+          <div class="col-md-1 align-self-end">
               <button class="btn btn-primary" type="submit">Показать</button>
           </div>
       </form>
     </div>
 
+
     <div class="row">
       {% for animal in animals %}
-        <div class="col-12 col-md-6 col-lg-3 mb-4 d-flex">
+        <div class="col-12 col-md-4 col-lg-3 mb-3 d-flex">
           <div class="card border-dark" style="width: 90%;">
             <div id="carouselExample{{ animal.id }}" class="carousel slide">
                 <div class="carousel-inner">
@@ -69,7 +71,7 @@
               {% for kind in animal.kind.all %}
               {{ kind.name }}
               {% endfor %}</p>
-              <p class="card-text">Приметы: {{ animal.description }}</p>
+              <p class="card-text">Описание: {{ animal.description }}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <a href="{% url 'animals:detail_animal' animal.id %}" class="btn btn-primary">Посмотреть</a>
               </div>
@@ -78,7 +80,7 @@
         </div>
       {% endfor %}
     </div>
-  </div>
+</div>
 
   <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center">
@@ -119,6 +121,13 @@
   </nav>
   
 {% else %}
-  <h1>Объявлений нет</h1>
+<div class="text-left">
+  <h4>Не найдено по следующему запросу поиска: 
+    <ul>
+      <li>Цель объявления: {{ request.GET.target }} </li>
+      <li>Вид животного: {{ request.GET.kind }}</li>
+    </ul>
+  </h4>
+</div>
 {% endif %}
 {% endblock %}
