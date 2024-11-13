@@ -9,7 +9,7 @@ from animals_app.models import Animal
 
 @login_required(login_url='users:login')
 def view_substack(request):
-    substack_animals = Substack.objects.all()
+    substack_animals = Substack.objects.filter(user=request.user)
     context = {
         'substack_animals': substack_animals
     }

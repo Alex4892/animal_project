@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'users',
     'phonenumber_field',
     'substack_app',
-    # 'clinic_app',
+    'clinics_app',
     # 'group_app',
 ]
 
