@@ -22,7 +22,7 @@ def view_animals(request: HttpRequest) -> HttpResponse:
     return render(request, "animals/index.html", context=context)
 
 
-def view_detail_animal(request, animal_id):
+def view_detail_animal(request: HttpRequest, animal_id: int) -> HttpResponse:
     animal = get_object_or_404(Animal, id=animal_id)
     kinds = animal.kind.all()
     comments = animal.comments.all()
