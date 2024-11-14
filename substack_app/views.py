@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse, HttpRequest
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 
@@ -8,7 +8,7 @@ from animals_app.models import Animal
 
 
 @login_required(login_url='users:login')
-def view_substack(request):
+def view_substack(request: HttpRequest) -> HttpResponse:
     substack_animals = Substack.objects.filter(user=request.user)
     context = {
         'substack_animals': substack_animals
@@ -18,7 +18,7 @@ def view_substack(request):
 
 @require_POST
 @login_required(login_url='users:login')
-def add_to_substack(request):
+def add_to_substack(request: HttpRequest) -> JsonResponse:
     animal_id = request.POST.get("animal_id")
     try:
         animal = Animal.objects.get(id=animal_id)
@@ -38,17 +38,16 @@ def add_to_substack(request):
 
 @require_POST
 @login_required(login_url='users:login')
-def remove_from_substack(request):
-    if request.method == "POST":
-        substack_animal_id = request.POST.get("substack_animal_id")
-        try:
-            substack_animal = Substack.objects.get(id=substack_animal_id)
-            substack_animal.delete()
-            return JsonResponse({"status": "success",
-                                 "message": "Объявление удалено из закладки"})
-        except Animal.DoesNotExist:
-            return JsonResponse({"status": "error",
-                                 "message": "Объявление не найдено"})
-    return JsonResponse({"status": "error", "message": "Некорректный запрос"})
+def remove_from_substack(request: HttpRequest) -> JsonResponse:
+    substack_animal_id = request.POST.get("substack_animal_id")
+    try:
+        substack_animal = Substack.objects.get(id=substack_animal_id)
+        substack_animal.delete()
+        return JsonResponse({"status": "success",
+                             "message": "Объявление удалено из закладки"})
+    except Substack.DoesNotExist:
+        return JsonResponse({"status": "error",
+                             "message": "Объявление не найдено"})
+
 
 # Create your views here.
