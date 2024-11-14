@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core.exceptions import PermissionDenied
 from django.core.paginator import Paginator
 from django.views.decorators.http import require_POST
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpRequest, HttpResponse
 
 
 from .models import Animal
@@ -11,7 +11,7 @@ from .forms import AnimalForm
 from comments_app.forms import CommentForm
 
 
-def view_animals(request):
+def view_animals(request: HttpRequest) -> HttpResponse:
     animals_list = Animal.objects.all()
     paginator = Paginator(animals_list, 8)
     page_number = request.GET.get('page')
@@ -37,7 +37,7 @@ def view_detail_animal(request, animal_id):
 
 
 @login_required(login_url='users:login')
-def add_animal_view(request):
+def add_animal_view(request: HttpRequest) -> HttpResponse:
     if request.method == 'POST':
         form = AnimalForm(request.POST, request.FILES)
         if form.is_valid():
@@ -57,7 +57,7 @@ def add_animal_view(request):
 
 
 @login_required(login_url='users:login')
-def edit_animal_view(request, animal_id):
+def edit_animal_view(request: HttpRequest, animal_id: int) -> HttpResponse:
     animal = get_object_or_404(Animal, id=animal_id)
     if animal.submit != request.user:
         raise PermissionDenied(
@@ -71,7 +71,7 @@ def edit_animal_view(request, animal_id):
         form = AnimalForm(instance=animal)
     return render(request, 'animals/add_animal.html', {'form': form})
 
-def filtered_animals_view(request):
+def filtered_animals_view(request: HttpRequest) -> HttpResponse:
     animals = Animal.objects.all()
     target = request.GET.get('target', '').strip()
     kind = request.GET.get('kind', '').strip()
@@ -90,7 +90,7 @@ def filtered_animals_view(request):
 
 
 @login_required(login_url='users:login')
-def delete_animal_view(request, animal_id):
+def delete_animal_view(request: HttpRequest, animal_id: int) -> HttpResponse:
     animal = get_object_or_404(Animal, id=animal_id)
     if animal.submit != request.user:
         raise PermissionDenied(
@@ -101,9 +101,9 @@ def delete_animal_view(request, animal_id):
     return render(request, 'animals/delete_animal.html', {'animal': animal})
 
 
-@require_POST
 @user_passes_test(lambda u: u.is_superuser)
-def change_animal_status(request, animal_id):
+@require_POST
+def change_animal_status(request: HttpRequest, animal_id: int) -> JsonResponse:
     try:
         animal = Animal.objects.get(id=animal_id)
         animal.is_verified = not animal.is_verified
