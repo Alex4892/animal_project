@@ -50,7 +50,8 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'substack_app',
     'clinics_app',
-    # 'group_app',
+    # 'favorites_app',
+    'groups_app',
 ]
 
 MIDDLEWARE = [

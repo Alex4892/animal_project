@@ -25,8 +25,9 @@ urlpatterns = [
     path('', include('comments_app.urls', namespace='comments')),
     path('', include('users.urls', namespace='users')),
     path('', include('substack_app.urls', namespace='substack')),
-    # path('', include('clinics_app.urls', namespace='clinic')),
-    # path('', include('group_app.urls', namespace='group')),
+    # path('', include('favorites_app.urls', namespace='favorites')),
+    # path('', include('clinics_app.urls', namespace='clinics')),
+    # path('', include('groups_app.urls', namespace='groups')),
 ]
 
 if settings.DEBUG:
