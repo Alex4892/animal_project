@@ -72,9 +72,20 @@
     </div>
     <div class="container">
         {% block content %}{% endblock %}
-    </div>
     
-    <script src="{% static 'js/index.js' %}" type="module"></script>
+  
+      <footer class="text-center">
+        <div class="container">
+            {% block footer %}
+                &copy; Разработка и поддержка веб-сайта. По всем вопросам обращаться 
+                  к <a href="https://vk.com/alekseytorshin92">Торшину Алексею</a>
+                  <p>&copy; {% now "Y" %}</p>
+            {% endblock %}
+        </div>  
+    </footer>
+  </div>
+
+  <script src="{% static 'js/index.js' %}" type="module"></script>
 
   </body>
 </html>

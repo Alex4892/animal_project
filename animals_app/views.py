@@ -6,7 +6,7 @@ from django.views.decorators.http import require_POST
 from django.http import JsonResponse, HttpRequest, HttpResponse
 
 
-from .models import Animal
+from .models import Animal, PostImage
 from .forms import AnimalForm
 from comments_app.forms import CommentForm
 

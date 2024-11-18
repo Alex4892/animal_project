@@ -33,19 +33,29 @@ class Kind(models.Model):
 
 
 class PostImage(models.Model):
-    image = models.ImageField(
-        upload_to='animals/',
-        blank=True,
-        null=True,
-        verbose_name='Фото'
-    )
+    # image = models.ImageField(
+    #     upload_to='animals/',
+    #     blank=True,
+    #     null=True,
+    #     verbose_name='Фото'
+    # )
+    # images = models.ImageField(
+    #     upload_to='animals/'
+    # )
+
+    # class Meta:
+    #     verbose_name = "Фото"
+    #     verbose_name_plural = "Фото"
     images = models.ImageField(
-        upload_to='animals/'
+        upload_to='animals/',
     )
 
+    def __str__(self):
+        return f'Фото'
+
     class Meta:
-        verbose_name = "Фото"
-        verbose_name_plural = "Фото"
+        verbose_name = 'Файл с фотографией'
+        verbose_name_plural = 'Файл с фотографиями'
 
 
 class Animal(models.Model):

@@ -30,7 +30,7 @@ def add_to_substack(request: HttpRequest) -> JsonResponse:
         if not created:
             substack_item.save()
         return JsonResponse({"status": "success", "message":
-                            "Объявление добавлено в закладку"})
+                            "Объявление добавлено в избранные"})
     except Animal.DoesNotExist:
         return JsonResponse({"status": "error",
                              "message": "Объявление не найдено"})
@@ -44,7 +44,7 @@ def remove_from_substack(request: HttpRequest) -> JsonResponse:
         substack_animal = Substack.objects.get(id=substack_animal_id)
         substack_animal.delete()
         return JsonResponse({"status": "success",
-                             "message": "Объявление удалено из закладки"})
+                             "message": "Объявление удалено из избранных"})
     except Substack.DoesNotExist:
         return JsonResponse({"status": "error",
                              "message": "Объявление не найдено"})

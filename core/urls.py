@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from debug_toolbar.toolbar import debug_toolbar_urls
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -25,10 +26,11 @@ urlpatterns = [
     path('', include('comments_app.urls', namespace='comments')),
     path('', include('users.urls', namespace='users')),
     path('', include('substack_app.urls', namespace='substack')),
+    path('api/', include('animals_api.urls', namespace='animals_api')),
     # path('', include('favorites_app.urls', namespace='favorites')),
     # path('', include('clinics_app.urls', namespace='clinics')),
     # path('', include('groups_app.urls', namespace='groups')),
-]
+] + debug_toolbar_urls()
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,
