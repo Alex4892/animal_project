@@ -51,8 +51,7 @@
                 <p class="card-text">Описание: {{ substack_animal.animal.description }}</p>
                 <button type="button" class="btn btn-primary btn-remove-substack" data-substack-animal-id="{{ substack_animal.id }}">
                   Удалить</button>
-                  {% comment %} <button type="button" class="btn btn-primary btn-view-substack" data-substack-animal-id="{{ substack_animals }}">
-                    Посмотреть</button> {% endcomment %}
+                    <a href="{% url 'animals:detail_animal' substack_animal.animal.id %}" class="btn btn-primary">Посмотреть</a>
               </div>
             </div>
           </div>

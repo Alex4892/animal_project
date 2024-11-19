@@ -13,11 +13,6 @@ class Group(models.Model):
         verbose_name='Ссылка'
     )
 
-    def delete(self, *args, **kwargs):
-        if self.image:
-            self.image.delete()
-        super().delete(*args, **kwargs)
-
     class Meta:
         verbose_name = "Группа"
         verbose_name_plural = "Группы"

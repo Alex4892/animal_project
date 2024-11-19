@@ -39,6 +39,8 @@ def view_detail_animal(request: HttpRequest, animal_id: int) -> HttpResponse:
 @login_required(login_url='users:login')
 def add_animal_view(request: HttpRequest) -> HttpResponse:
     if request.method == 'POST':
+        images = request.FILES.getlist('images')
+        print(images)
         form = AnimalForm(request.POST, request.FILES)
         if form.is_valid():
             animal = form.save(commit=False)
@@ -50,6 +52,11 @@ def add_animal_view(request: HttpRequest) -> HttpResponse:
             kinds = form.cleaned_data.get('kind')
             animal.kind.set(kinds)
             animal.save()
+            for image in images:
+                photo = PostImage.objects.create(
+                    animal=form.instance,
+                    images=image
+                )
             return redirect('animals:index')
     else:
         form = AnimalForm()

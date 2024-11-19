@@ -32,31 +32,6 @@ class Kind(models.Model):
         verbose_name_plural = "Виды"
 
 
-class PostImage(models.Model):
-    # image = models.ImageField(
-    #     upload_to='animals/',
-    #     blank=True,
-    #     null=True,
-    #     verbose_name='Фото'
-    # )
-    # images = models.ImageField(
-    #     upload_to='animals/'
-    # )
-
-    # class Meta:
-    #     verbose_name = "Фото"
-    #     verbose_name_plural = "Фото"
-    images = models.ImageField(
-        upload_to='animals/',
-    )
-
-    def __str__(self):
-        return f'Фото'
-
-    class Meta:
-        verbose_name = 'Файл с фотографией'
-        verbose_name_plural = 'Файл с фотографиями'
-
 
 class Animal(models.Model):
     target = models.ManyToManyField(
@@ -91,12 +66,6 @@ class Animal(models.Model):
         max_length=100,
         verbose_name='Контактное лицо'
     )
-    image = models.ImageField(
-        upload_to='animals/',
-        blank=True,
-        null=True,
-        verbose_name='Фото'
-    )
     submit = models.ForeignKey(
         User,
         related_name="animals",
@@ -124,5 +93,23 @@ class Animal(models.Model):
         verbose_name = "Объявление"
         verbose_name_plural = "Объявления"
 
+
+class PostImage(models.Model):
+    animal = models.ForeignKey(
+        Animal,
+        on_delete=models.CASCADE,
+        related_name='images',
+        verbose_name='Животные',
+    )
+    images = models.ImageField(
+        upload_to='animals/',
+    )
+
+    def __str__(self):
+        return f'Фото'
+
+    class Meta:
+        verbose_name = 'Файл с фотографией'
+        verbose_name_plural = 'Файл с фотографиями'
 
 # Create your models here.
