@@ -84,10 +84,10 @@ class Animal(models.Model):
     def __str__(self):
         return self.nickname
 
-    def delete(self, *args, **kwargs):
-        if self.image:
-            self.image.delete()
-        super().delete(*args, **kwargs)
+    # def delete(self, *args, **kwargs):
+    #     if self.image:
+    #         self.image.delete()
+    #     super().delete(*args, **kwargs)
 
     class Meta:
         verbose_name = "Объявление"

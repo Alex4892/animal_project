@@ -11,10 +11,16 @@
         <div class="row">
           {% for substack_animal in substack_animals %}
           <div class="col-12 col-md-6 col-lg-3 mb-4 d-flex">
-            <div class="card border-dark" style="width: 90%;">
+            <div class="card border-dark" style="width: 120%;">
               <div id="carouselExample{{ substack_animal.id }}" class="carousel slide">
                 <div class="carousel-inner">
+                  {% for image in substack_animal.animal.images.all %}
                   <div class="carousel-item active">
+                    <img src="{% if image.images %} {{ image.images.url }} {% else %} 
+                    {% static 'img/1.jpg'%} {% endif %}" class="d-block w-100" alt="...">
+                  </div>
+                  {% endfor %}
+                  {% comment %} <div class="carousel-item active">
                     <img src="{% if substack_animal.animal.image %} {{ substack_animal.animal.image.url }} {% else %} 
                 {% static 'img/1.jpg' %} {% endif %}" class="d-block w-100" alt="...">
                   </div>
@@ -25,7 +31,7 @@
                   <div class="carousel-item">
                     <img src="{% if substack_animal.animal.image %} {{ substack_animal.animal.image.url }} {% else %} 
                 {% static 'img/1.jpg' %} {% endif %}" class="d-block w-100" alt="...">
-                  </div>
+                  </div> {% endcomment %}
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample{{ substack_animal.id }}" data-bs-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
