@@ -66,11 +66,11 @@ async def animal_details(callback_query: CallbackQuery):
         )
 
         await callback_query.message.edit_text(
-            f"Описание: {animal.description}\n",
-            f"Приметы: {animal.signs}\n",
-            # f"Город: {animal.city}\n"
-            # f"Номер телефона: {animal.phone_number}\n"
-            # f"Контактное лицо: {animal.contact_people}",
+            f"Описание: {animal.description}\n"
+            f"Приметы: {animal.signs}\n"
+            f"Город: {animal.city}\n"
+            f"Номер телефона: {animal.phone_number}\n"
+            f"Контактное лицо: {animal.contact_people}",
             reply_markup=keyboard
         )
     else:

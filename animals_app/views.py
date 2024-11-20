@@ -40,7 +40,6 @@ def view_detail_animal(request: HttpRequest, animal_id: int) -> HttpResponse:
 def add_animal_view(request: HttpRequest) -> HttpResponse:
     if request.method == 'POST':
         images = request.FILES.getlist('images')
-        print(images)
         form = AnimalForm(request.POST, request.FILES)
         if form.is_valid():
             animal = form.save(commit=False)
@@ -70,9 +69,15 @@ def edit_animal_view(request: HttpRequest, animal_id: int) -> HttpResponse:
         raise PermissionDenied(
             "У вас нет прав на редактирование данного объявления.")
     if request.method == 'POST':
+        images = request.FILES.getlist('images')
         form = AnimalForm(request.POST, request.FILES, instance=animal)
         if form.is_valid():
             form.save()
+            for image in images:
+                photo = PostImage.objects.create(
+                    animal=form.instance,
+                    images=image
+                )
             return redirect('animals:detail_animal', animal_id=animal.id)
     else:
         form = AnimalForm(instance=animal)
