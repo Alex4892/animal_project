@@ -32,7 +32,6 @@ class Kind(models.Model):
         verbose_name_plural = "Виды"
 
 
-
 class Animal(models.Model):
     target = models.ManyToManyField(
         Target,
@@ -84,11 +83,6 @@ class Animal(models.Model):
     def __str__(self):
         return self.nickname
 
-    # def delete(self, *args, **kwargs):
-    #     if self.image:
-    #         self.image.delete()
-    #     super().delete(*args, **kwargs)
-
     class Meta:
         verbose_name = "Объявление"
         verbose_name_plural = "Объявления"
@@ -106,7 +100,7 @@ class PostImage(models.Model):
     )
 
     def __str__(self):
-        return f'Фото'
+        return f'{"Фото"}'
 
     class Meta:
         verbose_name = 'Файл с фотографией'

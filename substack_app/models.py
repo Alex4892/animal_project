@@ -18,7 +18,6 @@ class Substack(models.Model):
         on_delete=models.CASCADE
     )
 
-
     class Meta:
         unique_together = ('user', 'animal')
         verbose_name = "Закладка"

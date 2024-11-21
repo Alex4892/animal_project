@@ -3,15 +3,17 @@
 # from django.contrib.auth import get_user_model
 # from animals_app.models import Animal, Kind
 # from animals_app.forms import AnimalForm
-# from animals_app.views import (view_animals, view_detail_animal, 
-#                              add_animal_view, edit_animal_view, delete_animal_view)
+# from animals_app.views import (view_animals, view_detail_animal,
+#                                add_animal_view, edit_animal_view,
+#                                delete_animal_view)
 
 # User = get_user_model()
 
 # class AnimalViewTests(TestCase):
 #     def setUp(self):
 #         self.factory = RequestFactory()
-#         self.user = User.objects.create_user(username='testuser', password='password')
+#         self.user = User.objects.create_user(username='testuser',
+#                                              password='password')
 #         self.kind = Kind.objects.create(name='Test Kind')
 #         self.animal = Animal.objects.create(
 #             title='Test Animal',

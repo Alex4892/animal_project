@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
+
 class Clinic(models.Model):
     name_clinic = models.TextField(
         max_length=30,
@@ -20,6 +21,7 @@ class Clinic(models.Model):
         max_length=15,
         verbose_name='Номер телефона'
     )
+
     def __str__(self):
         return self.name_clinic
 

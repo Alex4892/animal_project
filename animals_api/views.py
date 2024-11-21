@@ -5,6 +5,7 @@ from rest_framework import status
 from animals_app.models import Animal
 from .serializers import AnimalSerializer
 
+
 @api_view(['GET'])
 def animal_list(request):
     animals = Animal.objects.all()

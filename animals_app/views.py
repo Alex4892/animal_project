@@ -52,7 +52,7 @@ def add_animal_view(request: HttpRequest) -> HttpResponse:
             animal.kind.set(kinds)
             animal.save()
             for image in images:
-                photo = PostImage.objects.create(
+                image = PostImage.objects.create(
                     animal=form.instance,
                     images=image
                 )
@@ -74,7 +74,7 @@ def edit_animal_view(request: HttpRequest, animal_id: int) -> HttpResponse:
         if form.is_valid():
             form.save()
             for image in images:
-                photo = PostImage.objects.create(
+                image = PostImage.objects.create(
                     animal=form.instance,
                     images=image
                 )
@@ -82,6 +82,7 @@ def edit_animal_view(request: HttpRequest, animal_id: int) -> HttpResponse:
     else:
         form = AnimalForm(instance=animal)
     return render(request, 'animals/add_animal.html', {'form': form})
+
 
 def filtered_animals_view(request: HttpRequest) -> HttpResponse:
     animals = Animal.objects.all()
@@ -92,7 +93,7 @@ def filtered_animals_view(request: HttpRequest) -> HttpResponse:
         animals = animals.filter(target__name__icontains=target)
     if kind:
         animals = animals.filter(kind__name__icontains=kind)
-    paginator = Paginator(animals, 8) 
+    paginator = Paginator(animals, 8)
     page_number = request.GET.get('page')
     animals_page = paginator.get_page(page_number)
     context = {

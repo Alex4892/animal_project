@@ -36,10 +36,12 @@ class CustomAuthenticationForm(AuthenticationForm):
                                                                  'form-control'
                                                                  }))
 
+
 class UserProfileEditForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'father_name', 'email', 'phone_number', 'image')
+        fields = ('first_name', 'last_name', 'father_name',
+                  'email', 'phone_number', 'image')
         widgets = {
             'first_name': forms.TextInput(attrs={'class': 'form-control'}),
             'last_name': forms.TextInput(attrs={'class': 'form-control'}),

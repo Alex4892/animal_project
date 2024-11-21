@@ -24,10 +24,6 @@ def view_profile(request: HttpRequest) -> HttpResponse:
                            {'user_animals': user_animals})
 
 
-def is_admin(user):
-    return user.is_authenticated and user.is_staff
-
-
 @login_required(login_url='users:login')
 @user_passes_test(is_admin)
 def view_admin_dashboard(request: HttpRequest) -> HttpResponse:
@@ -84,6 +80,8 @@ def edit_profile_view(request: HttpRequest) -> HttpResponse:
     else:
         form = UserProfileEditForm(instance=user)
     return render(request, 'users/edit_profile.html', {'form': form})
+
+
 class CustomPasswordChangeView(PasswordChangeView):
     template_name = 'users/change_password.html'
     form_class = CustomPasswordChangeForm
