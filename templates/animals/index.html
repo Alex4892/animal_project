@@ -28,7 +28,7 @@
     {% for animal in animals %}
       <div class="col-12 col-md-4 col-lg-3 mb-3 d-flex">
         <div class="card border-dark" style="width: 120%;">
-          <div id="carouselExample{{ animal.id }}" class="carousel slide">
+          <div id="carouselExampleFade{{ animal.id }}"  class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
               {% for image in animal.images.all %}
               <div class="carousel-item active">
@@ -37,15 +37,15 @@
               </div>
               {% endfor %}
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample{{ animal.id }}" data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade{{ animal.id }}"  data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
+              <span class="visually-hidden">Предыдущий</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample{{ animal.id }}" data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade{{ animal.id }}"  data-bs-slide="next">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
+              <span class="visually-hidden">Следующий</span>
             </button>
-          </div>
+        </div>
 
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-center">
@@ -63,12 +63,12 @@
               {% endfor %}</p>
             <p class="card-text">Описание: {{ animal.description }}</p>
             <a href="{% url 'animals:detail_animal' animal.id %}" class="btn btn-primary">Посмотреть</a>
-
           </div>
         </div>
       </div>
     {% endfor %}
   </div>
+
 
   <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center">
