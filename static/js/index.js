@@ -1,8 +1,8 @@
 import { updateAnimalStatus, updateCommentStatus } from "./admin.js";
-import { addSubstackHandler, removeSubstackHandler } from "./substack.js";
+import { addFavoriteHandler, removeFavoriteHandler } from "./favorites.js";
 document.addEventListener("DOMContentLoaded", function () {
     updateAnimalStatus();
     updateCommentStatus();
-    addSubstackHandler();
-    removeSubstackHandler();
+    addFavoriteHandler();
+    removeFavoriteHandler();
 });

@@ -4,6 +4,7 @@
   Главная страница
 {% endblock %}
 {% block content %}
+
 <div class="border border-success p-2 mb-2 border-opacity-50">
     <h5>{% for target in animal.target.all %} {{ target.name }}
       {% endfor %}</h5>
@@ -18,11 +19,11 @@
     <h5>Номер телефона: {{ animal.phone_number }}</h5>
     <h5>Контактное лицо: {{ animal.contact_people }}</h5>
     
-    <div class="container">
+    <div class="container" style="height: 50%; width: 50%">
       <div id="carouselExampleFade{{ animal.id }}"  class="carousel slide carousel-fade" data-bs-ride="carousel">
         <div class="carousel-inner">
           {% for image in animal.images.all %}
-        <div class="carousel-item active mt-4">
+        <div class="carousel-item active mt-3">
           <img src="{% if image.images %} {{ image.images.url }} {% else %} 
           {% static 'img/1.jpg'%} {% endif %}" class="d-block w-100" alt="...">
         </div>
@@ -58,7 +59,7 @@
           <h5 class="card-target">{{comment}}</h5>
         </div>
         {% if user.is_authenticated and user == comment.author %}
-        <div class="btn-group" style="height:40px" role="group">
+        <div class="btn-group mt-2" style="height:40px" role="group">
           <button class="btn btn-danger" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Удалить</button>
           <a href="{% url 'comments:edit_comment' comment.id animal.id %}" class="btn btn-warning">Изменить</a>
         </div>

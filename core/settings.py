@@ -50,9 +50,9 @@ INSTALLED_APPS = [
     'comments_app',
     'users',
     'phonenumber_field',
-    'substack_app',
+    # 'substack_app',
+    'favorites_app',
     'clinics_app',
-    # 'favorites_app',
     'groups_app',
     'animals_api'
 ]

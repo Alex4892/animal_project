@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block lists %}
+Избранные
+{% endblock %}
+{% block content %}
+
+<div>
+    <div class="container">
+      {% if favorite_animals %}
+        <div class="row">
+          {% for favorite_animal in favorite_animals %}
+          <div class="col-12 col-md-6 col-lg-3 mb-4 d-flex">
+            <div class="card border-dark" style="width: 120%;">
+              <div id="carouselExampleFade{{ favorite_animal.id }}" class="carousel slide">
+                <div class="carousel-inner">
+                  {% for image in favorite_animal.animal.images.all %}
+                  <div class="carousel-item active">
+                    <img src="{% if image.images %} {{ image.images.url }} {% else %} 
+                    {% static 'img/1.jpg'%} {% endif %}" class="d-block w-100" alt="...">
+                  </div>
+                  {% endfor %}
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade{{ favorite_animal.id }}"  data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Предыдущий</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade{{ favorite_animal.id }}"  data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Следующий</span>
+                </button>
+              </div>
+
+              <div class="card-body">
+                <h5 class="card-text">
+                  {% for target in favorite_animal.animal.target.all %} 
+                    {{ target }} 
+                    {% if not forloop.last %}, {% endif %}
+                  {% endfor %}</h5>
+                <p class="card-text">Вид животного:
+                  {% for kind in favorite_animal.animal.kind.all %} 
+                    {{ kind }} 
+                    {% if not forloop.last %}, {% endif %}
+                  {% endfor %}</p> 
+                <p class="card-text">Описание: {{ favorite_animal.animal.description }}</p>
+                <button type="button" class="btn btn-primary btn-remove-favorite" data-favorite-animal-id="{{ favorite_animal.id }}">
+                  Удалить</button>
+                  <a href="{% url 'animals:detail_animal' favorite_animal.animal.id %}" class="btn btn-primary">Посмотреть</a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      
+      </div>
+      {% else %}
+      <h2>Избранных нет</h2>
+      {% endif %}
+</div>
+
+{% endblock %}
