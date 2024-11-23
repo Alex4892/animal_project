@@ -14,7 +14,7 @@ class Clinic(models.Model):
         verbose_name='Город'
     )
     adress = models.TextField(
-        max_length=30,
+        max_length=50,
         verbose_name='Адрес'
     )
     phone_number = models.CharField(

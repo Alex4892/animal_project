@@ -15,9 +15,8 @@
               <div id="carouselExampleFade{{ substack_animal.id }}"  class="carousel slide carousel-fade" data-bs-ride="carousel">
                 <div class="carousel-inner">
                   {% for image in substack_animal.animal.images.all %}
-                  <div class="carousel-item active">
-                    <img src="{% if image.images %} {{ image.images.url }} {% else %} 
-                    {% static 'img/1.jpg'%} {% endif %}" class="d-block w-100" alt="...">
+                  <div class="carousel-item active" style="height: 195px;">
+                    <img src="{{ image.images.url }}" class="d-block w-100" alt="...">
                   </div>
                   {% endfor %}
                 </div>

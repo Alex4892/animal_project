@@ -1,12 +1,6 @@
-# from django.shortcuts import render, get_object_or_404, redirect
-# from django.contrib.auth.decorators import login_required, user_passes_test
-# from django.core.exceptions import PermissionDenied
-# from django.core.paginator import Paginator
-# from django.views.decorators.http import require_POST
-# from django.http import JsonResponse
+from django.shortcuts import render
 
-
-# from .models import Clinic
+from .models import Clinic
 # from .forms import ClinicForm
 
 
@@ -21,11 +15,15 @@
 #     return render(request, "animals/index.html", context=context)
 
 
-# def view_detail_clinic(request):
-#     clinic_animals = Clinic.objects.all()
-#     context = {
-#         'clinic_animals': clinic_animals
-#     }
-#     return render(request, 'clinics/detail_clinics.html', context)
+def view_detail_clinic(request):
+    clinic = Clinic.objects.all()
+    name_clinic = clinic.name_clinic.all()
+    adress = clinic.adress.all()
+    context = {
+        'clinic': clinic,
+        'name_clinic': name_clinic,
+        'adress': adress,
+    }
+    return render(request, 'clinics/detail_clinics.html', context)
 
 # Create your views here.

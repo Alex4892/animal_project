@@ -27,33 +27,32 @@
   <div class="row">
     {% for animal in animals %}
       <div class="col-12 col-md-4 col-lg-3 mb-3 d-flex">
-        <div class="card border-dark" style="width: 120%;">
-          <div id="carouselExampleFade{{ animal.id }}"  class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="card border-dark" style="width: 18rem;">
+          <div id="carouselExample{{ animal.id }}" class="carousel slide">
             <div class="carousel-inner">
               {% for image in animal.images.all %}
               <div class="carousel-item active">
-                <img src="{% if image.images %} {{ image.images.url }} {% else %} 
-                {% static 'img/1.jpg'%} {% endif %}" class="d-block w-100" alt="...">
+                <img src="{{ image.images.url }}" class="d-block w-100" alt="..." style="height: 195px">
               </div>
               {% endfor %}
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade{{ animal.id }}"  data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample{{ animal.id }}"  data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Предыдущий</span>
+              <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade{{ animal.id }}"  data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample{{ animal.id }}"  data-bs-slide="next">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Следующий</span>
+              <span class="visually-hidden">Next</span>
             </button>
-        </div>
+          </div>
 
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-center">
               {% for target in animal.target.all %}
               <h5 class="card-title">{{ target.name }}</h5>
               {% endfor %}
-              <button type="button" class="btn-favorite btn border-0 text-primary" data-animal-id="{{ animal.id }}">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-favorite" viewBox="0 0 16 16">
+              <button type="button" class="btn-substack btn border-0 text-primary" data-animal-id="{{ animal.id }}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-substack" viewBox="0 0 16 16">
                   <path d="M15 3.604H1v1.891h14v-1.89ZM1 7.208V16l7-3.926L15 16V7.208H1ZM15 0H1v1.89h14V0Z"/>
                 </svg>
               </button>              

@@ -24,8 +24,7 @@
         <div class="carousel-inner">
           {% for image in animal.images.all %}
         <div class="carousel-item active mt-3">
-          <img src="{% if image.images %} {{ image.images.url }} {% else %} 
-          {% static 'img/1.jpg'%} {% endif %}" class="d-block w-100" alt="...">
+          <img src="{{ image.images.url }}" class="d-block w-100" alt="...">
         </div>
         {% endfor %}
       </div>
@@ -41,7 +40,7 @@
   </div>
     
 {% if user.is_authenticated and user == animal.submit %}
-  <div class="btn-group mt-3" role="group">
+  <div class="btn-group mt-2" role="group">
     <a href="{% url 'animals:delete_animal' animal.id %}" class="btn btn-danger">Удалить</a>
     <a href="{% url 'animals:edit_animal' animal.id %}" class="btn btn-warning">Изменить</a>
   </div>
