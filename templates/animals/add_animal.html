@@ -6,7 +6,7 @@
 {% block content %}
 <div>
     {% comment %} <h2>Подать объявление</h2> {% endcomment %}
-    <div class="container">
+    <div class="container" >
       <form method="post" enctype="multipart/form-data" class="mb-5">
           {% csrf_token %}
           {{ form.as_p }}

@@ -6,20 +6,25 @@ User = get_user_model()
 
 class Clinic(models.Model):
     name_clinic = models.TextField(
-        max_length=30,
+        max_length=100,
         verbose_name='Название клиники'
     )
-    city = models.TextField(
-        max_length=30,
+    city = models.CharField(
+        max_length=50,
         verbose_name='Город'
     )
-    adress = models.TextField(
-        max_length=50,
+    adress = models.CharField(
+        max_length=255,
         verbose_name='Адрес'
     )
     phone_number = models.CharField(
-        max_length=15,
+        max_length=30,
         verbose_name='Номер телефона'
+    )
+    cite = models.URLField(
+        blank=True,
+        null=True,
+        verbose_name='Сайт'
     )
 
     def __str__(self):

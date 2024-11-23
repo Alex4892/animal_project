@@ -10,4 +10,5 @@ class ClinicForm(forms.ModelForm):
         widgets = {
             'name_clinic': forms.TextInput(attrs={'class': 'form-control'}),
             'adress': forms.TextInput(attrs={'class': 'form-control'}),
+            'cite': forms.TextInput(attrs={'class': 'form-control'}),
         }

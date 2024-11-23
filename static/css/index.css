@@ -1,11 +1,24 @@
-footer {
+/* footer {
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: rgb(191, 188, 188);
+    background-color: rgb(160, 168, 162);
     color: rgb(0, 0, 0);
     text-align: left;
-    margin-top: 250px;
-  }
+    margin-top: 450px;
+} */
 
- 
+.footer {
+    background-color: #3E2723; 
+    color: white;
+    padding: 5px;
+    text-align: left;
+    margin-top: 195px;
+}
+
+body {
+    background: linear-gradient(to bottom, #A5D6A7, #4CAF50);
+    background-color: #b3cde3;
+    color: #333; 
+}
+

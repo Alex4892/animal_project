@@ -11,7 +11,7 @@
         <div class="row">
           {% for substack_animal in substack_animals %}
           <div class="col-12 col-md-6 col-lg-3 mb-4 d-flex">
-            <div class="card border-dark" style="width: 120%;">
+            <div class="card border-dark" style="background-color:#e3f2fd;">
               <div id="carouselExampleFade{{ substack_animal.id }}"  class="carousel slide carousel-fade" data-bs-ride="carousel">
                 <div class="carousel-inner">
                   {% for image in substack_animal.animal.images.all %}

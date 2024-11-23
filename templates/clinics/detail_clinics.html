@@ -1,6 +1,38 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block lists %}
-  Главная страница
+  Адреса ветеринарных клиник
 {% endblock %}
 {% block content %}
+<div class="text-center">
+  <h2>Ветеринарные клиники</h2>
+</div>
+<div>
+
+  <table class="table text-center">
+    <thead>
+      <tr>
+        <th scope="col">Название клиники</th>
+        <th scope="col">Город</th>
+        <th scope="col">Адрес</th>
+        <th scope="col">Номер телефона</th>
+        <th scope="col">Сайт</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for clinic in clinics %}
+        <tr>
+          <td>{{clinic.name_clinic}}</td>
+          <td>{{clinic.city}}</td>
+          <td>{{clinic.adress}}</td>
+          <td>{{clinic.phone_number}}</td>
+          <td><a href="{{ clinic.cite }}"target="_blank"> {{clinic.cite}}</td>       
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+
+<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Afd706f3b0796162d1f9270d461413b0c8d4c6442941362a64c0abac8ffc67498&amp;width=597&amp;height=525&amp;lang=ru_RU&amp;scroll=true"></script>
+{% endblock %}
