@@ -105,5 +105,3 @@ class PostImage(models.Model):
     class Meta:
         verbose_name = 'Файл с фотографией'
         verbose_name_plural = 'Файл с фотографиями'
-
-# Create your models here.

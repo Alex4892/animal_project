@@ -9,8 +9,8 @@ class Group(models.Model):
         max_length=100,
         verbose_name='Название группы'
     )
-    link = models.URLField(
-        verbose_name='Ссылка'
+    link_vk = models.CharField(
+        verbose_name='Ссылка в VK'
     )
 
     def __str__(self):

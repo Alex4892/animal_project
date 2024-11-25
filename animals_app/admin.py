@@ -6,6 +6,3 @@ admin.site.register(Animal)
 admin.site.register(Kind)
 admin.site.register(Target)
 admin.site.register(PostImage)
-
-
-# Register your models here.

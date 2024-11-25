@@ -9,6 +9,10 @@ class Clinic(models.Model):
         max_length=100,
         verbose_name='Название клиники'
     )
+    logo = models.ImageField(
+        upload_to='logos/',
+        verbose_name='Лого'
+    )
     city = models.CharField(
         max_length=50,
         verbose_name='Город'
@@ -16,6 +20,11 @@ class Clinic(models.Model):
     adress = models.CharField(
         max_length=255,
         verbose_name='Адрес'
+    )
+    map_link = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name='Ссылка на клинику'
     )
     phone_number = models.CharField(
         max_length=30,

@@ -126,4 +126,3 @@ def change_animal_status(request: HttpRequest, animal_id: int) -> JsonResponse:
     except Animal.DoesNotExist:
         return JsonResponse({"status": "error",
                              "message": "Объявление не найдено"})
-# Create your views here.
