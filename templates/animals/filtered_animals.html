@@ -6,33 +6,34 @@
 {% block content %}
 
 {% if animals %}
-  <div class="container">
+  <div class="d-flex justify-content-start">
 
-    <div class="mb-5 text-center">
+      <div class="mb-5 text-center">
         <form method="get" action="{% url 'animals:filtered_animals' %}" class="row g-3 needs-validation" novalidate>
-          <div class="col-md-2">
-              <label for="animal_target" class="form-label"><b>Цель объявления</b></label>
-              <input type="text" class="form-control" id="animal_target" name="target" value="{{ request.GET.target }}">
+          <div class="col-md-4">
+            <label for="animal_target" class="form-label"><b>Цель объявления</b></label>
+            <input type="text" class="form-control" id="animal_target" name="target" value="{{ request.GET.target }}">
           </div>
-          <div class="col-md-2">
-              <label for="kind" class="form-label"><b>Вид животного</b></label>
-              <input type="text" class="form-control" id="kind" name="kind" value="{{ request.GET.kind }}">
+          <div class="col-md-4">
+            <label for="kind" class="form-label"><b>Вид животного</b></label>
+            <input type="text" class="form-control" id="kind" name="kind" value="{{ request.GET.kind }}">
           </div>
           <div class="col-md-1 align-self-end">
-              <button class="btn btn-primary" type="submit">Показать</button>
+            <button class="btn btn-primary" type="submit">Показать</button>
           </div>
-      </form>
+        </form>
+      </div>
     </div>
 
 
     <div class="row">
       {% for animal in animals %}
-        <div class="col-12 col-md-4 col-lg-3 mb-3 d-flex">
+        <div class="col-12 col-md-4 col-lg-3 mb-5 d-flex">
           <div class="card border-dark" style="width: 18rem; background-color:#e3f2fd;">
             <div id="carouselExampleFade{{ animal.id }}"  class="carousel slide carousel-fade" data-bs-ride="carousel">
                 <div class="carousel-inner">
                   {% for image in animal.images.all %}
-                  <div class="carousel-item active" style="height: 190px;">
+                  <div class="carousel-item active" style="height: 220px;">
                     <img src="{{ image.images.url }}" class="d-block w-100" alt="...">
                   </div>
                   {% endfor %}
@@ -46,7 +47,7 @@
                   <span class="visually-hidden">Следующий</span>
                 </button>
               </div>
-            {% comment %} <img src="{% if animal.image %} {{ animal.image.url }} {% else %} {% static 'img/1.jpg' %} {% endif %}"> {% endcomment %}
+          
             <div class="card-body">
               <div class="d-flex justify-content-between align-items-center">
                 {% for target in animal.target.all %}
@@ -60,11 +61,11 @@
                   </button> 
                 {% endif %}    
               </div>
-              <p class="card-text">Вид животного: 
+              <p class="card-text"><b>Вид животного:</b> 
               {% for kind in animal.kind.all %}
               {{ kind.name }}
               {% endfor %}</p>
-              <p class="card-text">Описание: {{ animal.description }}</p>
+              <p class="card-text"><b>Описание:</b> {{ animal.description }}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <a href="{% url 'animals:detail_animal' animal.id %}" class="btn btn-primary">Посмотреть</a>
               </div>
