@@ -12,6 +12,11 @@ class Group(models.Model):
     link_vk = models.CharField(
         verbose_name='Ссылка в VK'
     )
+    cite = models.URLField(
+        blank=True,
+        null=True,
+        verbose_name='Сайт'
+    )
 
     def __str__(self):
         return self.name_group

@@ -6,52 +6,53 @@
 {% block content %}
 
 <div class="border border-success p-3 mb-1">
-    <h5>{% for target in animal.target.all %} {{ target.name }}
-      {% endfor %}</h5>
-    <h5>Вид животного:
-      {% for kind in kinds %} {{ kind }} {% if not forloop.last %}, {% endif %}
+  <h5>{% for target in animal.target.all %} {{ target.name }}
       {% endfor %}
-    </h5>
-    <h5>Кличка: {{ animal.nickname }}</h5>
-    <h5>Описание: {{ animal.description }}</h5>
-    <h5>Приметы: {{ animal.signs }}</h5>
-    <h5>Город: {{ animal.city }}</h5>
-    <h5>Номер телефона: {{ animal.phone_number }}</h5>
-    <h5>Контактное лицо: {{ animal.contact_people }}</h5>
-    
-    <div class="container" style="height: 50%; width: 50%">
-      <div id="carouselExampleFade{{ animal.id }}"  class="carousel slide carousel-fade" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          {% for image in animal.images.all %}
-        <div class="carousel-item active mt-3">
-          <img src="{{ image.images.url }}" class="d-block w-100" alt="...">
-        </div>
+  </h5>
+      <h5>Вид животного:
+        {% for kind in kinds %} {{ kind }} {% if not forloop.last %}, {% endif %}
         {% endfor %}
+      </h5>
+      <h5>Кличка: {{ animal.nickname }}</h5>
+      <h5>Описание: {{ animal.description }}</h5>
+      <h5>Приметы: {{ animal.signs }}</h5>
+      <h5>Город: {{ animal.city }}</h5>
+      <h5>Номер телефона: {{ animal.phone_number }}</h5>
+      <h5>Контактное лицо: {{ animal.contact_people }}</h5>
+      
+      <div class="container" style="height: 50%; width: 50%">
+        <div id="carouselExampleFade{{ animal.id }}"  class="carousel slide carousel-fade" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            {% for image in animal.images.all %}
+            <div class="carousel-item active mt-3">
+              <img src="{{ image.images.url }}" class="d-block w-100" alt="...">
+            </div>
+            {% endfor %}
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade{{ animal.id }}"  data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Предыдущий</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade{{ animal.id }}"  data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Следующий</span>
+          </button>
+        </div>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade{{ animal.id }}"  data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Предыдущий</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade{{ animal.id }}"  data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Следующий</span>
-      </button>
-    </div>
-  </div>
-    
-{% if user.is_authenticated and user == animal.submit %}
-  <div class="btn-group mt-2" role="group">
-    <a href="{% url 'animals:delete_animal' animal.id %}" class="btn btn-danger">Удалить</a>
-    <a href="{% url 'animals:edit_animal' animal.id %}" class="btn btn-warning">Изменить</a>
-  </div>
+      
+      {% if user.is_authenticated and user == animal.submit %}
+      <div class="btn-group mt-2" role="group">
+        <a href="{% url 'animals:delete_animal' animal.id %}" class="btn btn-danger">Удалить</a>
+        <a href="{% url 'animals:edit_animal' animal.id %}" class="btn btn-warning">Изменить</a>
+      </div>
 </div>
-{% endif %}
-
-<div class="card mt-4 mb-4">
-  <div class="card-header">
+      {% endif %}
+      
+  <div class="card mt-4 mb-4">
+    <div class="card-header">
       Комментарии
-  </div>
-  {% for comment in comments %}
+    </div>
+    {% for comment in comments %}
     <div class="card-body">
       <div class="d-flex justify-content-between border-top">
         <div>
@@ -66,24 +67,22 @@
       </div>
       <p class="card-text">{{ comment.text }}</p>
     </div>
-
-    <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-target fs-5" id="exampleModalToggleLabel">Modal 1</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            Удалить комментарий?
-          </div>
-          <div class="modal-footer">
-            <a href="{% url 'comments:delete_comment' comment.id animal.id %}" class="btn btn-danger">Удалить</a>
-          </div>
+    
+    <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1"><div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-target fs-5" id="exampleModalToggleLabel"></h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Удалить комментарий?
+        </div>
+        <div class="modal-footer">
+          <a href="{% url 'comments:delete_comment' comment.id animal.id %}" class="btn btn-danger">Удалить</a>
         </div>
       </div>
     </div>
-
+  </div>
   {% endfor %}
   <div class="container mt-2 mb-2" style="width: 75%">
     <form method="POST" action="{% url 'comments:add_comment' animal.id %}">

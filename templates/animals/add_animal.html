@@ -5,16 +5,13 @@
 {% endblock %}
 {% block content %}
 <div>
-    {% comment %} <h2>Подать объявление</h2> {% endcomment %}
-    <div class="container" >
-      <form method="post" enctype="multipart/form-data" class="mb-5">
-          {% csrf_token %}
-          {{ form.as_p }}
-          <div class="col-md-6">
-            <input required class="form-label" name="images" type="file" multiple>
-          </div>
-          <button type="submit" class="btn btn-primary">Сохранить</button>
-      </form>
+  <div class="container" >
+    <form method="post" enctype="multipart/form-data" class="mb-5">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div class="col-md-6"><input required class="form-label" name="images" type="file" multiple></div>
+      <button type="submit" class="btn btn-primary">Сохранить</button>
+    </form>
   </div>
 </div>
 {% endblock %}

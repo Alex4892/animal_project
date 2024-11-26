@@ -7,8 +7,8 @@
 <div class="text-center">
   <h2>Ветеринарные клиники</h2>
 </div>
-<div>
 
+<div>
   <table class="table text-center">
     <thead>
       <tr>
@@ -19,35 +19,33 @@
         <th scope="col">Сайт</th>
       </tr>
     </thead>
+
     <tbody>
         {% for clinic in clinics %}
         <tr>
-          <td class='d-flex justify-content-center align-items-center'>
-              {{clinic.name_clinic}}
-            <img src="{{ clinic.logo.url }}" class="d-block ms-2" alt="..." style="height: 40px"></td>
+          <td class='d-flex justify-content-center align-items-center'>{{clinic.name_clinic}}
+            <img src="{{ clinic.logo.url }}" class="d-block ms-2" alt="..." style="height: 40px">
+          </td>
           <td>{{clinic.city}}</td>
-          <td>
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#clinic{{ clinic.id }}">
-  {{clinic.adress}}
-</button>
-<div class="modal fade" id="clinic{{ clinic.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">{{clinic.name_clinic}}</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        {{clinic.map_link|safe}}
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-      </div>
-    </div>
-  </div>
-</div>
+          <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#clinic{{ clinic.id }}">
+            {{clinic.adress}}</td>
+          </button>
+          
+          <div class="modal fade" style="height: 1440px" id="clinic{{ clinic.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">{{clinic.name_clinic}}</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">{{clinic.map_link|safe}}</div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+              </div>
+            </div>
+            </div>
+          </div>
             
-           </td>
           <td><a href="tel:{{ clinic.phone_number }}" class="text-black text-decoration-none">{{clinic.phone_number}} </a></td>
             <td>{% if clinic.cite %}<a class="navigation-link" href="{{ clinic.cite }}" target="_blank">
               <?xml version="1.0" ?><svg data-name="Layer 1" id="Layer_1" width="40" height="40" viewBox="0 0 35 35" xmlns="http://www.w3.org/2000/svg">
@@ -65,10 +63,9 @@
                 -
                 {% endif %}
           </td> 
-          </tr>
         </tr>
         {% endfor %}
-    </tbody>
+      </tbody>
   </table>
 </div>
 
@@ -110,5 +107,4 @@
   </ul>
 </nav>
 
-{% comment %} <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Afd706f3b0796162d1f9270d461413b0c8d4c6442941362a64c0abac8ffc67498&amp;width=597&amp;height=525&amp;lang=ru_RU&amp;scroll=true"></script> {% endcomment %}
 {% endblock %}
