@@ -5,55 +5,53 @@
 {% endblock %}
 {% block content %}
 
-<div>
-      {% if substack_animals %}
-        <div class="row">
-          {% for substack_animal in substack_animals %}
-          <div class="col-12 col-md-6 col-lg-3 mb-4 d-flex">
-            <div class="card border-dark" style="background-color:#e3f2fd;">
-              <div id="carouselExampleFade{{ substack_animal.id }}"  class="carousel slide carousel-fade" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                  {% for image in substack_animal.animal.images.all %}
-                  <div class="carousel-item active" style="height: 195px;">
-                    <img src="{{ image.images.url }}" class="d-block w-100" alt="...">
-                  </div>
-                  {% endfor %}
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade{{ substack_animal.id }}"  data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Предыдущий</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade{{ substack_animal.id }}"  data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Следующий</span>
-                </button>
-              </div>
-
-              <div class="card-body">
-                <h5 class="card-text">
-                  {% for target in substack_animal.animal.target.all %} 
-                    {{ target }} 
-                    {% if not forloop.last %}, {% endif %}
-                  {% endfor %}</h5>
-                <p class="card-text">Вид животного:
-                  {% for kind in substack_animal.animal.kind.all %} 
-                    {{ kind }} 
-                    {% if not forloop.last %}, {% endif %}
-                  {% endfor %}</p> 
-                <p class="card-text">Описание: {{ substack_animal.animal.description }}</p>
-                <button type="button" class="btn btn-primary btn-remove-substack" data-substack-animal-id="{{ substack_animal.id }}">
-                  Удалить</button>
-                    <a href="{% url 'animals:detail_animal' substack_animal.animal.id %}" class="btn btn-primary">Посмотреть</a>
-              </div>
+  {% if substack_animals %}
+  
+  <div class="row">
+    {% for substack_animal in substack_animals %}
+    <div class="col-12 col-md-6 col-lg-3 mb-4 d-flex">
+      <div class="card border-dark" style="background-color:#e3f2fd;">
+        <div id="carouselExampleFade{{ substack_animal.id }}"  class="carousel slide carousel-fade" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            {% for image in substack_animal.animal.images.all %}
+            <div class="carousel-item active" style="height: 195px;">
+              <img src="{{ image.images.url }}" class="d-block w-100" alt="...">
             </div>
+            {% endfor %}
           </div>
-          {% endfor %}
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade{{ substack_animal.id }}"  data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Предыдущий</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade{{ substack_animal.id }}"  data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Следующий</span>
+          </button>
         </div>
-      
+        
+        <div class="card-body">
+          <h5 class="card-text">
+            {% for target in substack_animal.animal.target.all %}{{ target }} 
+            {% if not forloop.last %}, {% endif %}
+            {% endfor %}</h5>
+            <p class="card-text">Вид животного:
+              {% for kind in substack_animal.animal.kind.all %} {{ kind }} 
+              {% if not forloop.last %}, {% endif %}
+              {% endfor %}
+            </p> 
+            <p class="card-text">Описание: {{ substack_animal.animal.description }}</p>
+            <button type="button" class="btn btn-primary btn-remove-substack" data-substack-animal-id="{{ substack_animal.id }}">
+              Удалить
+            </button>
+            <a href="{% url 'animals:detail_animal' substack_animal.animal.id %}" class="btn btn-primary">Посмотреть</a>
+        </div>
+        </div>
       </div>
+      {% endfor %}
       {% else %}
-      <h2>Избранных нет</h2>
+      <div class="text-center">
+        <h1>Избранных нет</h1>
+      </div>
       {% endif %}
-
-
+    </div>
 {% endblock %}

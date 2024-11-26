@@ -8,7 +8,6 @@
   <h2>Ветеринарные клиники</h2>
 </div>
 
-<div>
   <table class="table text-center">
     <thead>
       <tr>
@@ -39,10 +38,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">{{clinic.map_link|safe}}</div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-              </div>
-            </div>
+              <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button></div>
             </div>
           </div>
             
@@ -62,12 +58,11 @@
                 {% else %}
                 -
                 {% endif %}
-          </td> 
-        </tr>
+            </td> 
+          </tr>
         {% endfor %}
       </tbody>
   </table>
-</div>
 
 <nav aria-label="Page navigation example">
   <ul class="pagination justify-content-center">

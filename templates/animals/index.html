@@ -21,18 +21,19 @@
       <div class="col-md-1 align-self-end">
           <button class="btn btn-primary" type="submit">Показать</button>
       </div>
-  </form>
+    </form>
+  </div>
 </div>
 
   <div class="row">
     {% for animal in animals %}
-      <div class="col-12 col-md-4 col-lg-3 mb-5 d-flex">
+    <div class="col-12 col-md-6 col-lg-3 mb-4 d-flex">
         <div class="card border-dark" style="width: 18rem; background-color:#e3f2fd;">
            <div id="carouselExampleFade{{ animal.id }}" class="carousel slide carousel-fade">
             <div class="carousel-inner">
               {% for image in animal.images.all %}
-              <div class="carousel-item active">
-                <img src="{{ image.images.url }}" class="d-block w-100" alt="..." style="height: 190px">
+              <div class="carousel-item active" style="height: 190px;">
+                <img src="{{ image.images.url }}" class="d-block w-100" alt="...">
               </div>
               {% endfor %}
             </div>
@@ -107,7 +108,9 @@
     </ul>
   </nav>
 {% else %}
+<div class="text-center">
   <h1>Объявлений нет</h1>
+</div>
 {% endif %}
 
 {% endblock %}

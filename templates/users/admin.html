@@ -6,7 +6,6 @@
 <div class="text-center">
   <h2>Панель администратора</h2>
 </div>
-<div>
 
   <h3>Объявления</h3>
   <table class="table text-center">
@@ -21,24 +20,20 @@
       </tr>
     </thead>
     <tbody>
-        {% for animal in animals %}
-        <tr>
-          <td>{% for target in animal.target.all %} {{ target.name }}
-            {% endfor %}</td>
-          <td> {% for kind in animal.kind.all %} {{ kind.name }}
-      {% endfor %}</td>
-          <td>{{ animal.nickname }}</td>
-          <td>{{ animal.phone_number }}</td>
-          <td>{{ animal.signs }}</td>
-          <td>
-              <input class="form-check-input animal-switch" type="checkbox" role="switch" id="animalSwitch{{ animal.id }}"
-                     data-animal-id="{{ animal.id }}" {% if animal.is_verified %}checked{% endif %}>
-          </td>        
-        </tr>
-        {% endfor %}
+      {% for animal in animals %}
+      <tr>
+        <td>{% for target in animal.target.all %} {{ target.name }}{% endfor %}</td>
+        <td>{% for kind in animal.kind.all %} {{ kind.name }}{% endfor %}</td>
+        <td>{{ animal.nickname }}</td>
+        <td>{{ animal.phone_number }}</td>
+        <td>{{ animal.signs }}</td>
+        <td><input class="form-check-input animal-switch" type="checkbox" role="switch" id="animalSwitch{{ animal.id }}"
+                   data-animal-id="{{ animal.id }}" {% if animal.is_verified %}checked{% endif %}></td>        
+      </tr>
+      {% endfor %}
     </tbody>
   </table>
-</div>
+
 
 <div class="mt-5">
   <h3>Комментарии</h3>
@@ -52,17 +47,17 @@
       </tr>
     </thead>
     <tbody>
-        {% for comment in comments %}
-        <tr>
-            <td>{{ comment.author }}</td>
-            <td>{{ comment.email }}</td>
-            <td>{{ comment.text }}</td>
-            <td>
-                <input class="form-check-input comment-switch" type="checkbox" role="switch" id="commentSwitch{{ comment.id }}"
-                       data-comment-id="{{ comment.id }}" {% if comment.is_verified %}checked{% endif %}>
-            </td>         
-        </tr>
-        {% endfor %}
+      {% for comment in comments %}
+      <tr>
+        <td>{{ comment.author }}</td>
+        <td>{{ comment.email }}</td>
+        <td>{{ comment.text }}</td>
+        <td>
+          <input class="form-check-input comment-switch" type="checkbox" role="switch" id="commentSwitch{{ comment.id }}"
+                 data-comment-id="{{ comment.id }}" {% if comment.is_verified %}checked{% endif %}>
+        </td>         
+      </tr>
+      {% endfor %}
     </tbody>
   </table>
 </div>
