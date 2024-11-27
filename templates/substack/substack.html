@@ -5,12 +5,17 @@
 {% endblock %}
 
 {% block content %}
+
+
   {% if substack_animals %}
   
+  <div class="mb-5 text-center">
+    <h2>Объявления категории "Избранные"</h2>
+  </div>
   <div class="row">
     {% for substack_animal in substack_animals %}
     <div class="col-12 col-md-6 col-lg-3 mb-4 d-flex">
-      <div class="card border-dark" style="background-color:#e3f2fd;">
+      <div class="card border-dark" style="width: 18rem"; style="background-color:#e3f2fd;">
         <div id="carouselExampleFade{{ substack_animal.id }}"  class="carousel slide carousel-fade" data-bs-ride="carousel">
           <div class="carousel-inner">
             {% for image in substack_animal.animal.images.all %}
@@ -48,6 +53,7 @@
         </div>
       </div>
       {% endfor %}
+      
       {% else %}
       <div class="text-center">
         <h1>Избранных нет</h1>
