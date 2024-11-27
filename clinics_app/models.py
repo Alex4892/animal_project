@@ -42,5 +42,3 @@ class Clinic(models.Model):
     class Meta:
         verbose_name = "Клиника"
         verbose_name_plural = "Клиники"
-
-# Create your models here.

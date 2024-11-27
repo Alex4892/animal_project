@@ -14,6 +14,3 @@ def view_detail_group(request):
     }
     return render(request, 'groups/detail_groups.html', context=context)
     return render(request, 'groups/detail_groups.html', {'groups': groups})
-
-
-# Create your views here.

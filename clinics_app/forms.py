@@ -1,6 +1,5 @@
 from django import forms
 from .models import Clinic
-# from .models import House
 
 
 class ClinicForm(forms.ModelForm):

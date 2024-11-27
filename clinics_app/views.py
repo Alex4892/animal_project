@@ -14,4 +14,3 @@ def view_detail_clinic(request):
     }
     return render(request, 'clinics/detail_clinics.html', context=context)
     return render(request, 'clinics/detail_clinics.html', {'clinics': clinics})
-# Create your views here.

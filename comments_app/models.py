@@ -39,6 +39,3 @@ class Comment(models.Model):
 
     def __str__(self):
         return f'Комментарий от {self.email} к объявлению'
-
-
-# Create your models here.

@@ -29,7 +29,6 @@ urlpatterns = [
     path('', include('clinics_app.urls', namespace='clinics')),
     path('', include('groups_app.urls', namespace='groups')),
     path('api/', include('animals_api.urls', namespace='animals_api')),
-    # path('', include('favorites_app.urls', namespace='favorites')),
 ] + debug_toolbar_urls()
 
 if settings.DEBUG:

@@ -3,8 +3,8 @@
 {% block lists %}
   Главная страница
 {% endblock %}
-{% block content %}
 
+{% block content %}
 <div class="border border-success p-3 mb-1">
   <h5>{% for target in animal.target.all %} {{ target.name }}
       {% endfor %}
@@ -84,6 +84,7 @@
     </div>
   </div>
   {% endfor %}
+  
   <div class="container mt-2 mb-2" style="width: 75%">
     <form method="POST" action="{% url 'comments:add_comment' animal.id %}">
       {% csrf_token %}

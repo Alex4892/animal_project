@@ -61,5 +61,3 @@ def change_comment_status(request: HttpRequest,
                             "message": "Комментарий не найден"})
     except Exception as e:
         return JsonResponse({"status": "error", "message": str(e)})
-
-# Create your views here.

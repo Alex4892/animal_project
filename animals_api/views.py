@@ -30,5 +30,3 @@ def animal_detail(request, pk):
 
     serializer = AnimalSerializer(animal)
     return Response(serializer.data)
-
-# Create your views here.

@@ -1,6 +1,5 @@
 from django import forms
 from .models import Animal
-# from .models import House
 
 
 class AnimalForm(forms.ModelForm):

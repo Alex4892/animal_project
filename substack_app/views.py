@@ -48,6 +48,3 @@ def remove_from_substack(request: HttpRequest) -> JsonResponse:
     except Substack.DoesNotExist:
         return JsonResponse({"status": "error",
                              "message": "Объявление не найдено"})
-
-
-# Create your views here.

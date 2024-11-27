@@ -24,5 +24,3 @@ class Group(models.Model):
     class Meta:
         verbose_name = "Группа"
         verbose_name_plural = "Группы"
-
-# Create your models here.
